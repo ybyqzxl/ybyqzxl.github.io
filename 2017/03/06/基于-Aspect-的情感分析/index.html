@@ -1,0 +1,1143 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NLP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/china.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
+本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Aspect 的情感分析">
+<meta property="og:url" content="http://zhaoxueli.win/2017/03/06/基于-Aspect-的情感分析/index.html">
+<meta property="og:site_name" content="Xueli's Blog">
+<meta property="og:description" content="写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
+本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！">
+<meta property="og:updated_time" content="2017-03-16T14:03:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于 Aspect 的情感分析">
+<meta name="twitter:description" content="写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
+本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhaoxueli.win/2017/03/06/基于-Aspect-的情感分析/"/>
+
+
+
+
+
+  <title> 基于 Aspect 的情感分析 | Xueli's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xueli's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Believe yourself, Never give up!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhaoxueli.win/2017/03/06/基于-Aspect-的情感分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xueli">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/china.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xueli's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于 Aspect 的情感分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-06T10:11:41+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/06/基于-Aspect-的情感分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/06/基于-Aspect-的情感分析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/06/基于-Aspect-的情感分析/" class="leancloud_visitors" data-flag-title="基于 Aspect 的情感分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。</p>
+<p>本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！</p>
+<p>由于自己翻译能力有限，其中一大部分词语可能理解有误，希望指正！</p>
+<hr>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>在传统的文档或句子级别的情感分析方面，在分析是主要有五部分组成，分别是 ( e<sub>i</sub>, a<sub>ij</sub>, s<sub>ijkl</sub>, h<sub>k</sub>, t<sub>l</sub> ). </p>
+<a id="more"></a>
+<ul>
+<li><strong>e<sub>i</sub></strong> : 一个实体或目标的名称;</li>
+<li><strong>a<sub>ij</sub></strong> : 为该实体的一个方面 (诺基亚电池不错，电池为该方面) ;</li>
+<li><strong>s<sub>ijkl</sub></strong> : 值对实体某个方面的意见，如上面所举的例子，不错为对诺基亚电池的意见;</li>
+<li><strong>h<sub>k</sub></strong> : 为发表意见的人或者部门 (holder) ;</li>
+<li><strong>t<sub>l</sub></strong> : 为发表该意见的时间;</li>
+</ul>
+<p>为了获取这五部分需要进行六个任务，在任务之前需要解释一下所用到的概念：</p>
+<ul>
+<li><p><strong>实体模型 ( Model of entity )</strong><br>: 一个实体或目标 e<sub>i</sub> 是有一组 aspects 的集合组成 A = { a<sub>i1</sub>, a<sub>i2</sub>, &hellip;, a<sub>in</sub> }.  e<sub>i</sub> 可以由其实体表达式的任一的有限集合来表示 { ee<sub>i1</sub>, ee<sub>i2</sub>, &hellip;, ee<sub>is</sub> }. 每个实体中的 aspects a<sub>ij</sub> ∈ A<sub>i</sub> 可以被其 aspect (方面) 表达式的任一有限集合来表示 { ae<sub>ij1</sub>, ae<sub>ij2</sub>, &hellip;, ae<sub>ijm</sub> }.</p>
+</li>
+<li><p><strong>文本意见模型 ( Model of opinion document )</strong><br>: 一个意见文档 d 包含在某一个时间点上意见持有者集合 { h<sub>1</sub>, h<sub>2</sub>, &hellip;, h<sub>p</sub>} 对实体集合 { e<sub>1</sub>, e<sub>2</sub>, &hellip;, e<sub>i</sub> } 的一些方面 ( aspects ) 所发表的意见。</p>
+</li>
+</ul>
+<p>所以，给定一个意见文档D，意见分析包含以下6个任务：</p>
+<ul>
+<li><p><strong>Task 1 实体提取与分类 ( Entity extraction and categorization)</strong><br>: 提取D中的所有实体表达式，并将同义实体表达式分类或分组到实体集群（或类别）中。 每个实体表达式集合指示唯一实体 e<sub>i</sub> ;</p>
+</li>
+<li><p><strong>Task 2 方面(属性)提取与分类 ( aspect extraction and categorization)</strong><br>: 提取实体的所有方面 ( aspect ) 表达式，并将这些方面表达式分类到集中。 实体 e<sub>i</sub> 的每个方面表达式集表示唯一的方面 a<sub>ij</sub> ;</p>
+</li>
+<li><p><strong>Task 3 意见持有者(发布者)提取与分类 ( opinion holder extraction and categorization)</strong><br>: 从文本或结构化数据中提取意见持有人的意见，并对其进行分类;</p>
+</li>
+<li><p><strong>Task 4 时间提取与分类 ( time extraction and categorization)</strong><br>: 提取意见的时间，标准化不同的时间格式;</p>
+</li>
+<li><p><strong>Task 5 对属性情绪分类 ( aspect sentiment classification )</strong><br>: 确定关于方面 a<sub>ij</sub> 的意见是正面的，负面的还是中性的，或者将方面的数字情感评级分配;</p>
+</li>
+<li><p><strong>Task 6 五元意见组的生成 ( opinion quintuple genertation )</strong><br>: 基于上述任务的结果生成在文档d中表达的所有意见五元组 ( e<sub>i</sub>, a<sub>ij</sub>, s<sub>ijkl</sub>, h<sub>k</sub>, t<sub>l</sub> ) ;</p>
+</li>
+</ul>
+<p>通常把基于该框架的意见分析叫做基于 aspect 的情感分析 ( aspect-based sentiment analysis )。</p>
+<h2 id="Aspect-level"><a href="#Aspect-level" class="headerlink" title="Aspect-level"></a>Aspect-level</h2><p>这里主要集中讨论上述六个任务中的方面(属性)提取与分类 ( aspect extraction and categorization) 任务：</p>
+<ul>
+<li><p><strong>方面提取 ( Aspect extraction )</strong><br>: 例如 “The voice quality of this phone is amazing,” 其中 ”voice quality“ 是 ”This phone“ 的方面，但是 ”This phone“ 并不指明是一个 GENRAL 的方面，因为在这里他只是代表了电话的 voice quality. 但是 ”I love this phone“ 指明了电话代表了一个全体。所以 GENRAL 方面为 ”This phone“. 记住每当我们谈论一个方面时，我们必须知道它属于哪个实体。</p>
+</li>
+<li><p><strong>方面分类 ( Asepect Sentiment classfication )</strong><br>: 这个任务决定了不同方面的观点是积极，消极还是中立。 在上面的第一个例子中，对 “voice quality” 方面的意见是积极的。 在第二个例子中，对 GENERAL 方面的意见也是积极的。</p>
+</li>
+</ul>
+<h3 id="1-方面情感分类-Aspect-Sentiment-Classification"><a href="#1-方面情感分类-Aspect-Sentiment-Classification" class="headerlink" title="1. 方面情感分类( Aspect Sentiment Classification )"></a>1. 方面情感分类( Aspect Sentiment Classification )</h3><p>在进行分类时主要有两种方法：</p>
+<ol>
+<li>基于监督学习的方法</li>
+<li>基于词典的方法</li>
+</ol>
+<p><strong>基于监督学习的方法</strong>：当前的主要进行的方法是<em>分析确定依赖关系</em>，比如:</p>
+<blockquote>
+<p>( Jiang et al..2011 ) 将一组方面的相关特征进行分类 </p>
+<p>( Boiy and Moens, 2009 ) 基于解析树中对目标的方面特征的位置进行加权分析</p>
+</blockquote>
+<p>基于监督学习的方法依赖于训练数据，这表明从一个领域标记的训练数据训练出来的模型在另一个领域中表现很差。并且当前的方法研究也主要应用于文档级别，因为文档级别较长，并且包含比单个句子更多的分类特征。因此，监督学习难以扩展到大量的应用领域。</p>
+<p><strong>基于词典的方法</strong>：该方法可以避免一些基于监督学习所遇到的问题，并且已经证明在大量领域表现不错。这样的方法通常为无监督的，通过应用情感词典 ( sentiment lexicon ) , 复合表达 ( composite expressions ) , 意见规则 ( role of opinion ) 和 句子解析树来确定句子中每个方面的情感趋向。同时也考虑了情感转意  ( <em>sentiment shifters</em> ) , 转折词 ( <em>but-clauses</em> ) 等。</p>
+<p>下面介绍一个简单的基于词典的方法分类方法，假设实体和方面已知，其主要有四个步骤：</p>
+<ol>
+<li><strong>标记情感词和情感短语 ( Mark Sentiment words and phrases )</strong> : 标记句子中的情感词和短语，每个积极的情感给情感分数+1，每个校级的情感给情感分数-1，例如：<em>”The voice quality of this phone is not good, but the battery life is long.“ 通过分析时候，该句子变成 ”The voice quality of this phone is not <strong>good</strong> [+1], but the battery life is long“</em> 因为 ”good“ 是一个积极的词语，但是注意 “long” 并不是一个情感词，并且也不指明情感的积极和消极态度，但是联系上下文可知 ”long“ 可以代表一个情感词。 </li>
+<li><strong>应用情感转意 ( Apply sentiment shifters )</strong> 情感转义 ( Sentiment shifters ) 是词或者短语，它可以改变情感的方向，这里有很多转换，例如有可能转换语义的消极词语：<strong>*not</strong>, <strong>never</strong>, <strong>none</strong>, <strong>nobody</strong>, <strong>nowhere</strong>, <strong>neither</strong>, <strong>cannot*</strong>，通过该分析，由于句子中存在 ”not“ 所以该句子变成 <em>”The voice quality of this phone is not **good</em>* [-1], but the <em>*battery life\</em>* is long“* 注意，并不是所有这些词语会让情感转变，比如 ”not only… but also.“ 遇到这些词需要我们注意。</li>
+<li><strong>处理转折词(Handle but-clauses)</strong> : 表示相反的词或短语需要特殊处理，因为它们也经常改变情绪的方向，在英语中最常使用的反向词为 ”but“ 。 通过应用以下规则来处理包含相反词或短语的句子：<strong>如果不能确定</strong>一方的意见，则在相反词之前的情感方向和相反词之后的情绪方向彼此相反。使用<strong>如果不能确定</strong>是因为转折词或短语并不总只是指意见的变化，比如： ”Car-x is great, but Car-y is better.“ 。上述例句因为有转折词 “but” 所以通过这一处理之后上述例句变为： <em>”The voice quality of this phone is not <strong>good</strong> [-1], but the <strong>battery life</strong> is <strong>long</strong> [+1]“</em> 。我们可以推断 “long” 对 ”battery life“ 是积极地情感。除了 ”but“ 之外，短语比如: <em>”with the expection of“, “expect that”, “expect for”</em> 对这些短语的处理方式也是相同的。但是在否定的情况下不是所有的都代表着相反，比如： <em>” not only… but also. “</em>  所以处理这些词或短语要预先标识。</li>
+<li><strong>总的意见 ( Aggregate opinions )</strong> : 通过意见聚合函数将收集到的情感分数进行处理，从而确定句子中的每个方面上的情感最终取向。其主要步骤为下：<br>&emsp;&emsp;S : 表示一个包含一个方面 ( aspect )集合 { a<sub>i1</sub>, a<sub>i2</sub>, &hellip;, a<sub>in</sub> } 和包含一些情感词或短语的集合 { sw<sub>1</sub>, sw<sub>2</sub>, &hellip;, sw<sub>n</sub> } 并且这些情感词或短语通过1-3的步骤得出情感分数的句子。<br>所以意见聚合公式可以表示为：<br>$$score(a_1,s)=\sum_{ow_j∈s}\frac{sw_j.so}{dist(sw_j,a_i)}$$<br>&emsp;&emsp;sw<sub>j</sub> : 是句子中的情感词或短语。<br>&emsp;&emsp;dist( sw<sub>j</sub>, a<sub>i</sub>) : 是方面a<sub>i</sub> 与情感词 sw<sub>j</sub> 在 s 中的距离。<br>&emsp;&emsp;dist( sw<sub>j</sub>, a<sub>i</sub>) : 是方面a<sub>i</sub> 与情感词 sw<sub>j</sub>.so 为 sw<sub>i</sub> 的情感词分数。</li>
+</ol>
+<p>如果最终得分是正的，那么对方面 a<sub>i</sub> 的意见是肯定的。如果最终得分为负，则情绪为负，否则为中性。<br>这种方法在很多情况下表现良好。</p>
+<p>同时，现在有很多其他意见聚合函数方法，比如：</p>
+<blockquote>
+<p>( Hu and Liu, 2004 ) 简单地总结句子或句子段中的所有情绪词的情绪分数。</p>
+<p>( Kim and Hovy, 2004 ) 使用词的情绪分数相乘的办法。</p>
+</blockquote>
+<h3 id="2-意见基本规则和语义的组成-Basic-Rules-of-Opinions-and-Compositional-Semantics"><a href="#2-意见基本规则和语义的组成-Basic-Rules-of-Opinions-and-Compositional-Semantics" class="headerlink" title="2. 意见基本规则和语义的组成 ( Basic Rules of Opinions and Compositional Semantics )"></a>2. 意见基本规则和语义的组成 ( Basic Rules of Opinions and Compositional Semantics )</h3><p>意见规则表达了一种暗示正面或负面情绪的概念。它可以是简单的个人情绪词与他们的隐含情绪或复合表达式，可能需要常识或领域知识来确定他们的方向。下面将描述这些规则。表示这些规则的一种方式是使用组合语义 ( compositional semantics ) 的概念，其中陈述了复合表达式的含义是其组成部分的含义和它们组合的语法规则的函数。下面，我们首先在概念层次上描述规则，而不考虑它们如何在实际句子中表达，因为许多这些规则可以以多种方式表达，并且也可以是和上下文相关的。之后，我们转到表达式层次，讨论在情感分析的上下文中关于组成语义的当前研究，其目的是组合多个输入成分表达式以导出复合表达式的整体情绪方向。<br>规则使用类似于 BNF 形式的方式表示，其规则表如下：</p>
+<blockquote>
+<p>1. POSITIVE &emsp;&emsp; ::= P<br>2. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| PO<br>3. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| sentiment_shifter N<br>4. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| sentiment_shifter NE<br>5. NEGATIVE&emsp;&emsp;::= N<br>6. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| NE<br>7. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| sentiment_shifter P<br>8. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;| sentiment_shifter PO</p>
+</blockquote>
+<p>P 和 PO 为两种积极的情感表达式，其中：</p>
+<ul>
+<li>P 为原子表达式，即为句子或短语。</li>
+<li>PO 为多个表达式组成的表达式。</li>
+</ul>
+<p>N 和 NE 为两种消极的情感表达式，其中：</p>
+<ul>
+<li>N 为原子表达式，即为句子或短语。</li>
+<li><p>NE 为多个表达式组成的表达式。</p>
+</li>
+<li><p><em>“sentiment_shifter P” 和 </em>”sentiment_shifter PO“*  代表的消极的积极态度。即为消极态度。</p>
+</li>
+<li><em>“sentiment_shifter N” 和 </em>”sentiment_shifter NE“*  代表的消极的消极态度。即为积极态度。</li>
+</ul>
+<p>需要注意的是，这些不是以实际的BNF形式表示，而是用伪语言表示的抽象概念。我们很难精确的指出这些情感，因为在情感转意 ( sentimet_shifters ) 中会转到不同的情感方向，最后的 POSITIVE 和 NEGATIVE 表示最后的分析结果。</p>
+<ul>
+<li><strong>情感转意( sentimet_shifters )</strong><br>: <strong><em>消极词语</em></strong>例如：<strong>*not</strong>, <strong>never</strong>, <strong>none</strong>, <strong>nobody</strong>, <strong>nowhere</strong>, <strong>neither</strong>, <strong>cannot</strong>* 是最常见的情感转意词语，同时<strong><em>情态动词</em></strong> <em>( Modal auxiliary verbs )</em> 例如 <strong>*would</strong>, <strong>should</strong>, <strong>could</strong>, <strong>might</strong>, <strong>must</strong>, <strong>ought</strong>* 是一种转意词语，例如：”The brake could be improved,“ 可以转意情感，但并不是所有的是这样。有一些<strong><em>前缀词语</em></strong>也是一方面。一些典型的<strong><em>副词</em></strong>例如 <em>”barely“</em>, <em>“hardly”\</em> 通过比较 ”It works“ 和 “It hardly works” 可知两个反面意见是不同的。同时想一些 <strong><em>”fail“, “omit”, “neglect”</em></strong> 同样具有转意功能。<strong>讽刺句<em>\</em> *</strong>( sarcasm )<em>\</em>* 也会改变句子的情感方向。虽然手动识别这样的转意不是困难的，但是通过自动化系统识别它们并在实际句子中正确地处理它们是具有挑战性的。</li>
+</ul>
+<p>现在定义不包含转意的 N, NE, P, PO 基于他们的特性将这些表达式分组成六个概念类别：</p>
+<ol>
+<li><p><strong>情感词或短语 ( Sentiment word and phrase )</strong> : 这是最简单的也是最常用的类别，其中情绪词或短语单独可以暗示方面 ( aspect ) 的正面或负面意见，例如 “The voice quality is good” 中的 “good” 。这些词语或短语被称为为 P 和 N.</p>
+<blockquote>
+<p>9. P &emsp;&emsp; ::= a_positive_sentiment_word_or_phrase<br>10. N &emsp;&emsp; ::= a_negative_sentiment_word_or_phrase</p>
+</blockquote>
+</li>
+<li><p><strong>积极或消极意见项目的减少或增加 ( Decreased and increased quantity of an opinionated item (N and P) )</strong> : 表示减少或增加与意见项目（通常名词和名词短语）相关联的数量可以改变情感的方向。比如: ”This drug reduced my pain significantly“. ”drug” 是一个消极的词语，而 ”reduced pain“ 则表示减少疼痛是一个积极的方向。</p>
+<blockquote>
+<p>11. PO &emsp;&emsp; ::= less_or_decreased N<br>12. N &emsp;&emsp;&emsp;::= more_or_increased P<br>13. NE &emsp;&emsp; ::= less_or_decreased P<br>14. N &emsp;&emsp;&emsp;::= more_or_increased N</p>
+</blockquote>
+</li>
+<li><p><strong>在潜在的消极或积极条目中增加或减少 ( High, low, increased and decreased quantity of a positive or negative potential item )</strong> : 例如：“The battery life is short” 和 “The battery life is long.” 这些方面比如 ”battery life“ 的 态度是积极的，我们称他们为 PPI <strong>*( positive potential items )</strong>*. 同理，例如: “This phone costs a lot” 和 “Sony reduced the price of the camera.” 其中 ”Cost“ 和 ”price“ 的态度是消极的，我们称他们为 NPI <strong>*( negative potential items )</strong>* 诸如 ”battery“, ”cost“, “price” 本身并没有情感方向，但是增加量词之后就有了方向，其可表示为下面中的规则。</p>
+<blockquote>
+<p>15. PO &emsp;&emsp; ::= no_low_less_or_decreased_quantity_of NPI<br>16. &emsp;&emsp;&emsp;&emsp; | large_larger_or_increased_quantity_of PPI<br>17. NE &emsp;&emsp; ::= no_low_less_or_decreased_quantity_of PPI<br>18.  &emsp;&emsp;&emsp;&emsp; | large_larger_or_increased_quantity_of NPI<br>19. NPI &emsp;&emsp; ::= a_negative_potential_item<br>20. PPI &emsp;&emsp;::= a_positive_potential_item</p>
+</blockquote>
+</li>
+<li><p><strong>可取或不可取的事实( Desirable or undesirable fact )</strong> : 客观表达式可能意味着积极或消极的情绪，因为他们可以描述可取和不可取的事实。例如：”After my wife and I slept on the mattress for two weeks, I saw a mountain in the middle”. 该句话清楚地隐含了对 ”mattress“ 的消极情绪，但是 ”mountain“ 并没有携带任何意见，因此遵循下面两个规则:</p>
+<blockquote>
+<p>21. P &emsp;&emsp; ::= desirable_fact<br>22. N &emsp;&emsp;::= a_positive_potential_item</p>
+</blockquote>
+</li>
+<li><p><strong>与规范或期望值范围的偏差( Deviation from the norm or a desired value range )</strong> : 在一些应用程序领域中，项目的值具有期望的范围或范数，如果该值偏离正常范围，则为消极的，例如: “After taking the drug, my blood pressure went to 410.” 通常这样句子为客观的，所以定义如下规则。</p>
+<blockquote>
+<p>23. P &emsp;&emsp; ::= within the_desired_value_range<br>24. N &emsp;&emsp;::= deviate_from the_desired_value_range</p>
+</blockquote>
+</li>
+<li><p><strong>生产、消耗、浪费资源或废物 ( Produce and consume resource and waste )</strong> : 如果实体产生大量的资源，则是期望的（积极的），若是消耗大量资源，则是不被期望的（消极的），同理如果生产大量废物则是不被期望的（消极的），同理如果消耗大量废物则是期望的（积极的），所以定义如下规则。</p>
+<blockquote>
+<p>25. P &emsp;&emsp; ::= produce a_large_quantity_of_or_more resource<br>26. &emsp;&emsp;&emsp; | produce no,_little_or_less waste<br>27. &emsp;&emsp;&emsp; | consume no,_little_or_less resource<br>28. &emsp;&emsp;&emsp; | consume a_large_quantity_of_or_more waste<br>29. N &emsp;&emsp; ::= produce no,_little_or_less resource<br>30. &emsp;&emsp;&emsp; | produce some_or_more waste<br>31. &emsp;&emsp;&emsp; | consume a_large_quantity_of_or_more resource<br>32. &emsp;&emsp;&emsp; | consume no,_little_or_less waste</p>
+</blockquote>
+</li>
+</ol>
+<p>这些概念规则可以在实际句子中使用不同的单词和短语出现在许多（看似无限数量）的形式中，并且在不同的领域中，它们也可以以不同的方式表现。因此，他们很难认识。没有认识他们，规则不能应用。</p>
+<p>现在研究最多的组成规则是与<strong><em>情绪逆转 ( sentimet reversal )</em></strong> 有关，通常有情感转意和消极积极词语组成，比如: ”NOT“ &amp; POS(“good”) => NEG(“not good”)，另一方面就是遵循11到14的规则，比如：”reduced“ &amp; NEG(“PAIN”) => POS(“reduced pain”)。<br>还有就是<strong><em>情感冲突( sentiment conflict )</em></strong>, 当多个情感词汇出现在一起时，例如 “terribly good” 冲突解决是通过基于分配给它们的相对权重对成分进行排序来实现的，这些相对权重指示哪些成分对于情绪更重要。<br>10年，引入了六种类型的组合规则，他们是<strong><em>情绪反转 (sentiment reversal)，聚集 (aggregation)，传播 (propagation), 控制 (domination), 中和 (neutralization), 集中 (intensification)</em></strong>。其分别表示如下：</p>
+<ul>
+<li><p><strong>情绪反转 (sentiment reversal)</strong><br>: 和之前说明的规则类似。</p>
+</li>
+<li><p><strong>聚集 (aggregation)</strong><br>: 与<em>情绪冲突(sentiment conflict)</em>相似，但是定义不同，如果形容词-名词，副词-形容词，副词-动词短语中的术语的情感具有相反的方向，则将具有预修饰符的主导极性的混合极性分配给短语。比如，POS(“beautiful”) &amp; NEG(“fight”) => POSneg(“beautiful fight”)。</p>
+</li>
+<li><p><strong>传播 (propagation)</strong><br>: 当在短语/子句中使用 “propagation” 或 “transfer” 类型的动词时，应用传播规则，并且需要确定具有之前方面的极性。比如，PROP-POS(“to admire”) &amp; “his behavior” => POS(“his behavior”); “Mr.X” &amp; TRANS(“supports”) &amp; NEG(“crime business”) => NEG(“Mr.X”)。</p>
+</li>
+<li><p><strong>控制 (domination)</strong><br>: (1) 如果子句中的动词和客观的极性具有相反的方向，则动词的极性占优势，比如，NEG(“to deceive”) &amp; POS(“hopes”) => NEG(“to deceive hopes”).<br>(2) 如果一个复合句使用 but 连接，则 but 后面的子句的态势特征是占主导地位，比如，”NEG(“It was hard to climb a mountain all night long”), but POS(“a magnificent view rewarded the traveler at the morning”).“ => POS(whole sentence)).</p>
+</li>
+<li><p><strong>中和 (neutralization)</strong><br>: 当介词修饰符或条件运算符与情绪语句相关时，应用中和规则，比如，“despite” &amp; NEG(‘worries’) => NEUT(“despite worries”).</p>
+</li>
+<li><p><strong>集中 (intensification)</strong><br>: 加强或者削弱情感分数，比如，Pos_score(“happy”) \&lt; Pos_score(“extremely happy”)).</p>
+</li>
+</ul>
+<h3 id="3-方面提取-Aspect-Extraction"><a href="#3-方面提取-Aspect-Extraction" class="headerlink" title="3. 方面提取( Aspect Extraction )"></a>3. 方面提取( Aspect Extraction )</h3><p>该任务可以看做是一个信息提取任务，但是，在情感分析的上下文中，一些问题的具体特征可以方便进行提取。这个关键特征就目标的意见，而目标通常是从句子中提取的方面或者主题。因此，重要的任务是从句子识别目标并且识别其表达的意见。但是意见分为显示意见和隐示意见，显示意见的提取主要有以下四个方面：</p>
+<ol>
+<li>基于频繁名词和名词短语的提取</li>
+<li>利用意见和目标关系提取</li>
+<li>利用监督学习提取</li>
+<li>利用主题模型提取</li>
+</ol>
+<p>由于方面提取主要形式是在线评论，其有两种文本格式，如下：</p>
+<blockquote>
+<p><strong>My SLR is on the shelf</strong><br>  by <span style="border-bottom:2px dashed black;">camerafun4</span> Aug 09’04<br>  <strong>Pros</strong>: Great photos, easy to use, very small<br>  <strong>Cons</strong>: Battery usage; included memory is stingy.<br>  I had never used a digital camera prior to purchasing this Canon A70. I have always used a SLR … <span style="border-bottom:2px dashed black;"><strong>Read the full review</strong></span></p>
+<center><strong>Figure 5.1</strong>. An example of a review of format 1.</center>
+
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>GREAT Camera</strong>., Jun3,2004<br>  Reviewer: <strong>jprice174</strong> from Atlanta, Ga Aug 09’04<br>  <strong>Pros</strong>: Great photos, easy to use, very small<br>  <strong>Cons</strong>: Battery usage; included memory is stingy.<br>  I did a lot of research last year before I bought this camera… It kinda hurt to leave behind my beloved nikon 35mm SLR, but I was going to Italy, and I needed something smaller, and digital. The pictures coming out of this camera are amazing. The ‘auto’ feature takes great pictures most of the time. And with digital, you’re not wasting film if the picture doesn’t come out. …</p>
+<center><strong>Figure 5.2</strong>. An example of a review of format 2.</center>
+
+</blockquote>
+<h4 id="3-1-查找频繁名词和名词短语"><a href="#3-1-查找频繁名词和名词短语" class="headerlink" title="3.1 查找频繁名词和名词短语"></a>3.1 查找频繁名词和名词短语</h4><p>该方法从给定领域中的大量评论中找到作为名词和名词短语的显式方面表达式。其方法有：</p>
+<blockquote>
+<p>(Hu and Liu, 2004) 使用数据挖掘算法，用磁性 (POS) 标识器识别名词和名词短语（或组）。</p>
+</blockquote>
+<p>该方法的主要思想是：记录他们出现的频率，并且仅保留频繁的频率，其中频率阈值可以通过实验确定。使用这种方法的原因是，当人们评论一个实体的不同方面时，他们使用的词汇通常收敛。因此，经常谈论的那些名词通常是真实和重要的方面。但是评论中的不相关内容通常是多样的，即，在不同的评论中它们是非常不同的。因此，这些不频繁的名词可能是非方面或较不重要的方面。虽然这种方法很简单，但实际上是相当有效的。</p>
+<p>这种算法的精度被(Popescu and Etzioni,2005)提高了，他们的算法试图去除那些可能不是实体方面的名词短语，它通过计算短语和与实体类相关联的一些<strong>关系区分器  (mernoymy discriminators)</strong> 例如（camera）之间的点向互信息（PMI）得分来评估每个发现的名词短语。通过搜索网络用于找到 camera 的组件或部分得出的 camera 的名关系区分器为 “of camera”, “camera has”, “camera comes with” 等。其 PMI 的简化公式为：<br>$$PMI(a,d)=\frac{hits(a ∩ d)}{hits(a)hits(d)}$$<br>其中:</p>
+<ul>
+<li>a 为使用频率识别出来的候选的方面 (aspect)</li>
+<li>d 为一个鉴别器</li>
+</ul>
+<h3 id="4-使用方面-aspect-识别资源"><a href="#4-使用方面-aspect-识别资源" class="headerlink" title="4. 使用方面 (aspect) 识别资源"></a>4. 使用方面 (aspect) 识别资源</h3><p>在许多应用中，资源使用是重要的方面，例如，“This washer uses a lot of water.”。在这里，对 ”water“ 的使用量是 ”washer“ 的一个方面，并且这句话指示消极意见，因为消耗太多的资源是不期望的。但是这句话中没有意见，因此，发现资源词和短语（其被称为资源术语）对于情感分析是重要的。如下，显示了之前提出的两个涉及资源的意见规则：</p>
+<blockquote>
+<ol>
+<li>P&emsp;&emsp;&emsp; | consume no,_little_or_less resource</li>
+<li>N&emsp;&emsp;&emsp; | consume a_large_quantity_of_or_more resource</li>
+</ol>
+</blockquote>
+<p>在（Zhang和Liu，2011a）中，提出了一种提取资源项的方法。 例如，在上述示例中，应当提取 “water” 作为资源项。该方法基于二分图拟定了问题，并提出了一种迭代算法来解决这个问题。 该算法基于以下观察提出：</p>
+<blockquote>
+<p>在句子中表达的关于资源使用的情绪或观点通常由以下三元组确定，<strong>{动词(verb), 量词(quantifier), 名词或名词词组(noun_term)}</strong>. 例如：”This washer uses a lot of water“, 中 ”uses“ 是动词，”a lot of“, 是量词，”water“, 为名词代表着资源。</p>
+</blockquote>
+<p>该方法使用这样的三元组来帮助识别域语料库中的资源。该模型使用基于二分图循环定义来反映的资源使用动词（例如，consume）和资源术语（例如，water）之间的特殊强化关系。量词不用于计算，而是用于识别候选动词和资源术语。该算法假定给出了一个量不多并且可以手动编译的量化器列表。基于循环定义，使用类似于 HITS 的迭代算法来解决问题。为了开始迭代计算，使用一些全局种子资源来寻找和得出使用资源较强的动词的得分。然后将这些分数应用为用于任何应用域的迭代计算的初始化。当算法收敛时，就识别出了候选资源项的排序列表。</p>
+<h3 id="5-意见词典扩展和方面提取"><a href="#5-意见词典扩展和方面提取" class="headerlink" title="5. 意见词典扩展和方面提取"></a>5. 意见词典扩展和方面提取</h3><p>由于情绪/观点与其目标（或方面）之间的关系，情感词可以通过所识别的方面来识别，并且方面可以通过已知的情绪词来识别。提取的情感词和方面被用于识别新的情感词和新的方面，其被再次用于提取更多的情感词和方面。由于该过程涉及通过情感词和方面的传播，该方法被称为<strong>双重传播(double propagation)</strong>。这些提取规则基于基于情感词和方面之间的某些特定依赖关系。采用依赖语法来描述关系。<br>同时也强加了一些限制，情感词也可被认为是形容词和方面名词或名词短语。情感词和方面之间的依赖关系包括 mod, pnmod, subj, s, obj, obj2和desc, 而情感词和方面本身只包含连接关系conj。 OA-Rel 表示情感词和方面之间的关系，情感词本身之间的 OO-Rel 和方面之间的 AA-Rel, OA-Rel，OO-Rel或AA-Rel中的每个关系是\&lt; POS(w<sub>i</sub>), R,POS(w<sub>j</sub>)>, 其中POS(w<sub>i</sub>)是词w<sub>i</sub>的POS标签，R是依赖关系。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/06/基于-Aspect-的情感分析/"
+           data-title="基于 Aspect 的情感分析" data-url="http://zhaoxueli.win/2017/03/06/基于-Aspect-的情感分析/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/china.png"
+               alt="Xueli" />
+          <p class="site-author-name" itemprop="name">Xueli</p>
+           
+              <p class="site-description motion-element" itemprop="description">Xueli's personal Blog.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ybyqzxl" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aspect-level"><span class="nav-text">Aspect-level</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-方面情感分类-Aspect-Sentiment-Classification"><span class="nav-text">1. 方面情感分类( Aspect Sentiment Classification )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-意见基本规则和语义的组成-Basic-Rules-of-Opinions-and-Compositional-Semantics"><span class="nav-text">2. 意见基本规则和语义的组成 ( Basic Rules of Opinions and Compositional Semantics )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方面提取-Aspect-Extraction"><span class="nav-text">3. 方面提取( Aspect Extraction )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-查找频繁名词和名词短语"><span class="nav-text">3.1 查找频繁名词和名词短语</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用方面-aspect-识别资源"><span class="nav-text">4. 使用方面 (aspect) 识别资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-意见词典扩展和方面提取"><span class="nav-text">5. 意见词典扩展和方面提取</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xueli</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhaoxueli"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YMBOpHQbSlmtVcbIDGOI7XxI-gzGzoHsz", "w1ODLgn6JwWMwlJSon9thaiv");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
