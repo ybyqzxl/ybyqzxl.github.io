@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="NLP," />
+  <meta name="keywords" content="NLP,情感分析," />
 
 
 
@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Xueli's Blog">
 <meta property="og:description" content="写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
 本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！">
-<meta property="og:updated_time" content="2017-03-16T14:03:55.000Z">
+<meta property="og:updated_time" content="2017-03-17T00:39:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Aspect 的情感分析">
 <meta name="twitter:description" content="写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
@@ -133,7 +133,7 @@
 
 
 
-  <title> 基于 Aspect 的情感分析 | Xueli's Blog </title>
+  <title> 基于 Aspect 的情感分析 | Xueli's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -158,7 +158,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -200,6 +200,26 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -330,6 +350,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/情感分析/" itemprop="url" rel="index">
+                    <span itemprop="name">情感分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -584,6 +626,8 @@
           
             <a href="/tags/NLP/" rel="tag"># NLP</a>
           
+            <a href="/tags/情感分析/" rel="tag"># 情感分析</a>
+          
         </div>
       
 
@@ -676,11 +720,18 @@
           
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1139,5 +1190,41 @@
 
   
 
+
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
 </body>
 </html>
