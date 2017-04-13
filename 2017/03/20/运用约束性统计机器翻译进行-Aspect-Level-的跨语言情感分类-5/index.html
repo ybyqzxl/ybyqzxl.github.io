@@ -10,7 +10,7 @@
     
     <title>
         
-            分类: 情感分析 | 
+            运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类 | 
         
         Xueli&#39;s Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="在读研究生一枚.">
-    <meta name="keywords" content="研究生一枚，Android，NLP, 情感分析">
+    <meta name="keywords" content="研究生一枚，Android，NLP, 情感分析,NLP">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://zhaoxueli.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 情感分析 | Xueli&#39;s Blog">
+    <meta property="og:title" content="运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类 | Xueli&#39;s Blog">
     <meta property="og:description" content="在读研究生一枚.">
-    
+    <meta property="og:article:tag" content="NLP"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -203,106 +203,269 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-        
-    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
         
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/06/基于-Aspect-的情感分析/">基于 Aspect 的情感分析</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
-本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！
-由于自己翻译能力有限，其中一大部分词语可能理解有误，希望指正！
-
-基本概念在传统的文档或句子级别的情感分析方面，在分析是主要有五部分组成，分别是 ( ei, aij, sijkl, hk, tl ). 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/06/基于-Aspect-的情感分析/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>3月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/情感分析/">情感分析</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2017/03/06/基于-Aspect-的情感分析/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/china.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Xueli</strong>
+        <span>3月 20, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAENUlEQVR42u3aS3KjQBAFQN//0p4DzCC9V4UnTCtZKSQETbKoT9fXtyM4vhBgwoQJEyZMDkyYMGH69Uxf8XH1r9fX+cft//rX1ef2eH2X+gqYMGHChOkgpjeh8eKWr7+5uv7szKt7za7z+hkxYcKECdOpTFcB8nVof/0wr5OD1/9q75i/mOQZMWHChAkTpqhVGpSas/J1k6BgwoQJEyZMeSs2KY9bvjaZaNePCRMmTJg+kylvgCa/Jlue7aMmW6Ttr5gwYcKE6ROY8pD83M//db4JEyZMmDD9GqZ96zb5vk0jkgRiUyRHz4gJEyZMmI5gaoNr22Ddt3T3ycqbEvfqTEyYMGHCdChTHqrzJm8etu9KKWYDPZgwYcKE6ROYki3JnLilb8vXWfkdrRwTJkyYMB3B1LZNZwVn+0j7kjhJNd6cjwkTJkyYjmDaFKLtOGk+TJOE7btK9Ho7ExMmTJgwPZYpWVYbevPSepOOzAZt60leTJgwYcL0QKZknKUdgkmWdVfa0TZwi0IdEyZMmDAdwdQWn9/lMUsp2iRgBlcP7mDChAkTpscyzcL87Pz8vnum/DXUvXBMmDBhwvQQpnyoJf/cFrGzx2iJ69ePCRMmTJiOYNpv/iWjPz9NkJfNRcqCCRMmTJiOYGpbtHdtQw6HaeKWbj70EzV5MWHChAnTw5naoc/kxnmLNh9R3Wxb1iU3JkyYMGE6gil5+M35ebBv27XtC2vTGkyYMGHCdBJTUpS2KPk3dw3C5uuvS19MmDBhwvRYptkmYhJc28HWvHzNW7qzV4gJEyZMmE5iykdbZgT79m67/blfMyZMmDBhOokpL3qT89tSuVj0qGnb4mLChAkTpvOYNoE2IWvL5rz13PLVV8aECRMmTEcwbVqlswGaGUHyGvIXc0PehAkTJkyYHsLUhuFZWnBXiZunHfn4zuV1MGHChAnTQUz5g82C+qYV265qswZMmDBhwnQqU9L23WxY5t+35WuCNSuhMWHChAnTGUxF0zO+fd5OnW2CJnD7LVhMmDBhwnQGUxL4Z+M4w8X92FE3izFhwoQJ0xFMd5WjLfe9gzj7YZ1ovgkTJkyYMD2caZMoFM3TOCTPXt4sfSkSAkyYMGHC9ECmpMnbhthZWdu+qnZtq4QAEyZMmDA9kGk2uJMH7Fkzd3a12fXr7UxMmDBhwvQopvaYhfCcvm3dbs55A40JEyZMmI5gakvE/TZhApq0bjejtNF9MWHChAnTQUzthuIeMSmJN4nCrEjGhAkTJkxnMyVBfdZO/SqPJMDv71WXvpgwYcKE6QOYZjR5+zhfVX6d4evHhAkTJkwfyZQXri1fW8Tm62m3WjFhwoQJ06lMeZN3tn24Cdv7tCBvUmPChAkTpvOY8pZo0opNHqZNOzaFdJuyYMKECROmk5gcl9AIMGHChAkTJgcmTJgw/cbjD7uhzq7e9PEJAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/NLP/">NLP</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/" class="leancloud-views_num" data-flag-title="运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类&url=http://zhaoxueli.win//2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Xueli&#39;s Blog&title=运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类&summary=在读研究生一枚.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <hr>
+<p>本文是对 Aspect-Level Cross-lingual Sentiment Classiﬁcation with Constrained SMT 论文的 的一些笔记及理解，方便自己理解以及其他人的参考。</p>
+<p>如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！</p>
+<p>由于自己翻译能力有限，其中一部分词语可能理解有误，希望指正！</p>
+<hr>
+<p>传统的情感分析方法主要是基于：</p>
+<ol>
+<li>基于机器学习的方法：通过对特征进行提取标记的监督学习方法。</li>
+<li>基于词汇的方法：通过意见短语或词汇的关联规则。</li>
+</ol>
+<p>而大多的情感分类方法主要分为三种资源和文本：</p>
+<p><strong>训练</strong>：用于训练分类器的资源（搜集的训练示例和词汇）。<br><strong>测试</strong>：用来分析情感意见的资源。<br><strong>输出</strong>：输出的分类结果。</p>
+<p>传统的跨语言情感分类方法是基于 <strong><em>文档</em></strong> 或 <strong><em>句子</em></strong> 的粗粒度层面，由于不涉及到特殊的标记所以很容易进行语言翻译，而在 Aspect 层面标记依赖于一系列带特征标记的意见单元，在翻译到另一种语言时需要映射两种语言之间的意见单元，而在 aspect 层面由于标签依赖于标记的一组特定意见单元有关，当被转移到另一种语言时，需要映射两种语言之间的意见单元。</p>
+<p>因此提出一种保留意见单元边界的翻译方法，这样避免了转换后需要进行源语言和目标语言之间的意见单元映射（词对齐）。<br>该方法主要有两种用例：<br><strong>用例1</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的 L<sub>OUT</sub>是测试语言的情感极性。由（1）表示。<br>$$ L<em>{TRAIN} \neq L</em>{TEST}; L<em>{OUT} = L</em>{TEST}（1）$$<br>通常有两种方法：<br>a. 将可用训练资源翻译到测试语言中去然后构建分类器，并用测试语言进行测试得出结果.<br>b. 将测试语言翻译到目标语言中并得出结果，并将得到的意见单元翻译回源语言，并将结果映射到测试集上去。</p>
+<blockquote>
+<p><img src="http://i2.muimg.com/567571/8ca83a5a93772665.jpg" alt="a 和 b 的图表示"><br><strong>SA</strong>为情感分析，T 为翻译，Proj 为映射，Learn 为学习。</p>
+</blockquote>
+<p><strong>用例2</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread"
+        data-thread-key="2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/"
+        data-url="http://zhaoxueli.win/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/"
+        data-title="运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类">
+    </div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/06/基于-Aspect-的情感分析/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -827,7 +990,43 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        </body>
+            </div>
+        
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body>
     
 </html>
