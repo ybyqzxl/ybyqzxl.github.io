@@ -241,6 +241,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -377,16 +387,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -421,27 +421,18 @@
 
       
         
-          
-            <hr>
+          <hr>
 <p>本文是对 Aspect-Level Cross-lingual Sentiment Classiﬁcation with Constrained SMT 论文的 的一些笔记及理解，方便自己理解以及其他人的参考。</p>
 <p>如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！</p>
-<p>由于自己翻译能力有限，其中一部分词语可能理解有误，希望指正！</p>
+<p>由于自己英语能力有限，其中一部分词语可能理解有误，希望指正！</p>
 <hr>
-<p>传统的情感分析方法主要是基于：</p>
-<ol>
-<li>基于机器学习的方法：通过对特征进行提取标记的监督学习方法。</li>
-<li>基于词汇的方法：通过意见短语或词汇的关联规则。</li>
-</ol>
-<p>而大多的情感分类方法主要分为三种资源和文本：</p>
-<p><strong>训练</strong>：用于训练分类器的资源（搜集的训练示例和词汇）。<br><strong>测试</strong>：用来分析情感意见的资源。<br><strong>输出</strong>：输出的分类结果。</p>
-<p>传统的跨语言情感分类方法是基于 <strong><em>文档</em></strong> 或 <strong><em>句子</em></strong> 的粗粒度层面，由于不涉及到特殊的标记所以很容易进行语言翻译，而在 Aspect 层面标记依赖于一系列带特征标记的意见单元，在翻译到另一种语言时需要映射两种语言之间的意见单元，而在 aspect 层面由于标签依赖于标记的一组特定意见单元有关，当被转移到另一种语言时，需要映射两种语言之间的意见单元。</p>
-<p>因此提出一种保留意见单元边界的翻译方法，这样避免了转换后需要进行源语言和目标语言之间的意见单元映射（词对齐）。<br>该方法主要有两种用例：<br><strong>用例1</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的 L<sub>OUT</sub>是测试语言的情感极性。由（1）表示。<br>$$L<em>{TRAIN} \neq L</em>{TEST}; L<em>{OUT} = L</em>{TEST}     (1)$$<br>通常有两种方法：<br>a. 将可用训练资源翻译到测试语言中去然后构建分类器，并用测试语言进行测试得出结果.<br>b. 将测试语言翻译到目标语言中并得出结果，并将得到的意见单元翻译回源语言，并将结果映射到测试集上去。</p>
-<blockquote>
-<p><img src="http://i2.muimg.com/567571/8ca83a5a93772665.jpg" alt="a 和 b 的图表示"><br><strong>SA</strong>为情感分析，T 为翻译，Proj 为映射，Learn 为学习。</p>
-</blockquote>
-<p><strong>用例2</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -554,16 +545,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/06/基于-Aspect-的情感分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/06/基于-Aspect-的情感分析/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -811,6 +792,8 @@
   
 
 
+  
+
 
 
   
@@ -830,6 +813,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -855,35 +841,31 @@
 
   
 
-  
-    
+
+
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zhaoxueli"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+
+
+
+	
+
+
+
+
 
   
     
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "baf7578b2b4a418aa6ce4badf34c848f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
   
-
-
-
-
-
-
 
 
 
@@ -1019,6 +1001,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
