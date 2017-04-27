@@ -395,7 +395,7 @@
 <p>而大多的情感分类方法主要分为三种资源和文本：</p>
 <p><strong>训练</strong>：用于训练分类器的资源（搜集的训练示例和词汇）。<br><strong>测试</strong>：用来分析情感意见的资源。<br><strong>输出</strong>：输出的分类结果。</p>
 <p>传统的跨语言情感分类方法是基于 <strong><em>文档</em></strong> 或 <strong><em>句子</em></strong> 的粗粒度层面，由于不涉及到特殊的标记所以很容易进行语言翻译，而在 Aspect 层面标记依赖于一系列带特征标记的意见单元，在翻译到另一种语言时需要映射两种语言之间的意见单元，而在 aspect 层面由于标签依赖于标记的一组特定意见单元有关，当被转移到另一种语言时，需要映射两种语言之间的意见单元。</p>
-<p>因此提出一种保留意见单元边界的翻译方法，这样避免了转换后需要进行源语言和目标语言之间的意见单元映射（词对齐）。<br>该方法主要有两种用例：<br><strong>用例1</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的 L<sub>OUT</sub>是测试语言的情感极性。由（1）表示。<br>$$ L<em>{TRAIN} \neq L</em>{TEST}; L<em>{OUT} = L</em>{TEST}（1）$$<br>通常有两种方法：<br>a. 将可用训练资源翻译到测试语言中去然后构建分类器，并用测试语言进行测试得出结果.<br>b. 将测试语言翻译到目标语言中并得出结果，并将得到的意见单元翻译回源语言，并将结果映射到测试集上去。</p>
+<p>因此提出一种保留意见单元边界的翻译方法，这样避免了转换后需要进行源语言和目标语言之间的意见单元映射（词对齐）。<br>该方法主要有两种用例：<br><strong>用例1</strong>：用训练语言训练 L<sub>TRAIN</sub> 的分类器对测试语言 L<sub>TEST</sub> 进行情感极性测试，得出的 L<sub>OUT</sub>是测试语言的情感极性。由（1）表示。<br>$$L<em>{TRAIN} \neq L</em>{TEST}; L<em>{OUT} = L</em>{TEST}     (1)$$<br>通常有两种方法：<br>a. 将可用训练资源翻译到测试语言中去然后构建分类器，并用测试语言进行测试得出结果.<br>b. 将测试语言翻译到目标语言中并得出结果，并将得到的意见单元翻译回源语言，并将结果映射到测试集上去。</p>
 <blockquote>
 <p><img src="http://i2.muimg.com/567571/8ca83a5a93772665.jpg" alt="a 和 b 的图表示"><br><strong>SA</strong>为情感分析，T 为翻译，Proj 为映射，Learn 为学习。</p>
 </blockquote>
@@ -563,7 +563,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/情感分析/">情感分析<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/情感分析/">情感分析<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
