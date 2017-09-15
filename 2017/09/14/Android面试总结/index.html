@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="在读研究生一枚.">
-    <meta name="keywords" content="研究生一枚，Android，NLP, 情感分析">
+    <meta name="keywords" content="研究生一枚，Android，NLP, 情感分析,Android面试">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Android面试知识点总结 | Xueli&#39;s Blog">
     <meta property="og:description" content="在读研究生一枚.">
-    
+    <meta property="og:article:tag" content="Android面试"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -229,7 +229,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Android面试知识点总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Android面试知识点总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Activity-与-Fragment-的生命周期？"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">1. Activity 与 Fragment 的生命周期？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Activity："><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">Activity：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Fragment"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">Fragment:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Activity-和-Fragment-关系："><span class="post-toc-number">1.0.1.3.</span> <span class="post-toc-text">Activity 和 Fragment 关系：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Activity-的四种启动模式和特点？"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2. Activity 的四种启动模式和特点？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Activity-的缓存方法？"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">3. Activity 的缓存方法？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Service-的生命周期及两种启动方法。"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">4. Service 的生命周期及两种启动方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Service-保活。"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">5. Service 保活。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-广播的两种注册方法，有什么区别。"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">6. 广播的两种注册方法，有什么区别。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-Intent的使用方法及所传递的数据类型。"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">7. Intent的使用方法及所传递的数据类型。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-ContentProvider使用方法。"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">8. ContentProvider使用方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-Thread、AsyncTask、IntentService的使用场景与特点。"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">9. Thread、AsyncTask、IntentService的使用场景与特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-五种布局-FrameLayout、LinearLayout、-AbsoluteLayout、RelativeLayout、TableLayout-各自特点及绘制效率对比。"><span class="post-toc-number">1.0.10.</span> <span class="post-toc-text">10. 五种布局: FrameLayout、LinearLayout、 AbsoluteLayout、RelativeLayout、TableLayout 各自特点及绘制效率对比。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-Android的数据存储形式。"><span class="post-toc-number">1.0.11.</span> <span class="post-toc-text">11. Android的数据存储形式。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-SQlite-的基本操作"><span class="post-toc-number">1.0.12.</span> <span class="post-toc-text">12. SQlite 的基本操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-Android中的MVC模式。"><span class="post-toc-number">1.0.13.</span> <span class="post-toc-text">13. Android中的MVC模式。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-Merge、ViewStub-的作用。"><span class="post-toc-number">1.0.14.</span> <span class="post-toc-text">14. Merge、ViewStub 的作用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-Json有什么优劣势。"><span class="post-toc-number">1.0.15.</span> <span class="post-toc-text">15. Json有什么优劣势。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.0.15.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">1.0.15.2.</span> <span class="post-toc-text">缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#16-动画有哪两类，各有什么特点？"><span class="post-toc-number">1.0.16.</span> <span class="post-toc-text">16. 动画有哪两类，各有什么特点？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区别"><span class="post-toc-number">1.0.16.1.</span> <span class="post-toc-text">区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#17-Handler、Loop消息队列模型，各部分的作用。"><span class="post-toc-number">1.0.17.</span> <span class="post-toc-text">17. Handler、Loop消息队列模型，各部分的作用。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MessageQuene、Handler-和-looper-三者之间的关系："><span class="post-toc-number">1.0.17.1.</span> <span class="post-toc-text">MessageQuene、Handler 和 looper 三者之间的关系：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#18-怎样退出终止App。"><span class="post-toc-number">1.0.18.</span> <span class="post-toc-text">18. 怎样退出终止App。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#19-Asset目录与res目录的区别。"><span class="post-toc-number">1.0.19.</span> <span class="post-toc-text">19. Asset目录与res目录的区别。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#20-Android怎么加速启动Activity。"><span class="post-toc-number">1.0.20.</span> <span class="post-toc-text">20. Android怎么加速启动Activity。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-Android性能优化方法"><span class="post-toc-number">1.0.21.</span> <span class="post-toc-text">21. Android性能优化方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-Android中软引用与弱引用的应用场景。"><span class="post-toc-number">1.0.22.</span> <span class="post-toc-text">22. Android中软引用与弱引用的应用场景。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-Bitmap-压缩策略"><span class="post-toc-number">1.0.23.</span> <span class="post-toc-text">23. Bitmap 压缩策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-自定义View过程：onMeasure-、onLayout-、onDraw"><span class="post-toc-number">1.0.24.</span> <span class="post-toc-text">24. 自定义View过程：onMeasure()、onLayout()、onDraw()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#25-事件分发机制"><span class="post-toc-number">1.0.25.</span> <span class="post-toc-text">25. 事件分发机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#26-Android长连接，怎么处理心跳机制。"><span class="post-toc-number">1.0.26.</span> <span class="post-toc-text">26. Android长连接，怎么处理心跳机制。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#27-Zygote的启动过程"><span class="post-toc-number">1.0.27.</span> <span class="post-toc-text">27. Zygote的启动过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#28-Android-IPC-Binder原理。"><span class="post-toc-number">1.0.28.</span> <span class="post-toc-text">28. Android IPC:Binder原理。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Binder-四个角色："><span class="post-toc-number">1.0.28.1.</span> <span class="post-toc-text">Binder 四个角色：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Binder-运行机制："><span class="post-toc-number">1.0.28.2.</span> <span class="post-toc-text">Binder 运行机制：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#29-Android-5-0，6-0，7-0-8-0新特性。"><span class="post-toc-number">1.0.29.</span> <span class="post-toc-text">29. Android 5.0，6.0，7.0 8.0新特性。</span></a></li></ol></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -317,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/Android面试/">Android面试</a>
     </ul>
     
 
@@ -382,66 +382,56 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>  Andorid面试</p>
-<hr>
+        <h1 id="Android面试知识点总结"><a href="#Android面试知识点总结" class="headerlink" title="Android面试知识点总结"></a>Android面试知识点总结</h1><hr>
 <p>仅用作与记录自己看到的知识点总结，图片来源于网络 blog。</p>
 <hr>
-<p>###1. Activity 与 Fragment 的生命周期？</p>
-<p>####Activity：</p>
-<ul>
+<h3 id="1-Activity-与-Fragment-的生命周期？"><a href="#1-Activity-与-Fragment-的生命周期？" class="headerlink" title="1. Activity 与 Fragment 的生命周期？"></a>1. Activity 与 Fragment 的生命周期？</h3><h4 id="Activity："><a href="#Activity：" class="headerlink" title="Activity："></a>Activity：</h4><ul>
 <li>启动 Activiy：onCreate-&gt;onStart()-&gt;onResume(),Activity 进入运行状态.</li>
 <li>Activity 退居后台(Home 或启动新Activity):onPause()-&gt;onStop().</li>
 <li>Activity 返回前台:onRestart()-&gt;onStart()-&gt;onResume().</li>
 <li>Activity 后台期间内存不足情况下当再次启动会重新执行启动流程。</li>
 <li>锁屏:onPause()-&gt;onStop().</li>
-<li>解锁:onStart()-&gt;onResume().<br><img src="https://camo.githubusercontent.com/1523c46db6fb3e46f13db6effb0b27e972dd85d8/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313330383238313431393032383132" alt="Activity 启动流程示意图"><br>####Fragment:</li>
+<li>解锁:onStart()-&gt;onResume().<br><img src="https://camo.githubusercontent.com/1523c46db6fb3e46f13db6effb0b27e972dd85d8/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313330383238313431393032383132" alt="Activity 启动流程示意图"><h4 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment:"></a>Fragment:</h4></li>
 <li>创建 Fragment:onAttach()-&gt;onCreate-&gt;onCreateView()-&gt;onActivityCreate()-&gt;onStart()-&gt;onResume()</li>
 <li>销毁 Fragment:onPause()-&gt;onStop()-&gt;onDestroyView()-&gt;onDestroy()-&gt;onDetach().</li>
-<li>从返回栈中回到上一个 Fragment:onDestroyView()-&gt;onCreateView()-&gt;onActivityCreated()-&gt;onStart()-&gt;onResume().<br>####Activity 和 Fragment 关系：<br><img src="https://raw.githubusercontent.com/francistao/LearningNotes/master/Part1/Android/FlowchartDiagram.jpg" alt="此处输入图片的描述"></li>
+<li>从返回栈中回到上一个 Fragment:onDestroyView()-&gt;onCreateView()-&gt;onActivityCreated()-&gt;onStart()-&gt;onResume().<h4 id="Activity-和-Fragment-关系："><a href="#Activity-和-Fragment-关系：" class="headerlink" title="Activity 和 Fragment 关系："></a>Activity 和 Fragment 关系：</h4><img src="https://raw.githubusercontent.com/francistao/LearningNotes/master/Part1/Android/FlowchartDiagram.jpg" alt="此处输入图片的描述"></li>
 </ul>
-<p>###2. Activity 的四种启动模式和特点？</p>
-<ul>
+<h3 id="2-Activity-的四种启动模式和特点？"><a href="#2-Activity-的四种启动模式和特点？" class="headerlink" title="2. Activity 的四种启动模式和特点？"></a>2. Activity 的四种启动模式和特点？</h3><ul>
 <li>standard(标准模式):每次启动都会创建一个新的实例，并放入栈顶。（<strong>无法使用非 Activity 类的 Context 启动该模式的 Activity，如果启动需要加上 FlAG_ACTIVITY_NEW_TASK标记创建一个栈</strong>）。</li>
 <li>singleTop(栈顶复用模式):如果启动的 Activity 在栈顶，则该 Activity 不会重建，同时 Activity 的 onNewIntent() 方法会被调用，如果不在栈顶则通 standar 模式。</li>
 <li>singleTask(栈内复用模式):若启动的 Activity 在栈内，则不会创建新的实例调用 onNewIntent() 方法，并将该 Activity 上面所以的 Activity 清空（<strong>如果其他应用启动该 Activity，若不存在则简历新的 Task，若存在在后台，则后台 Task 也切换到前台</strong>）。</li>
 <li>singleInstance(单例模式):新的 Activity 直接创建新的任务栈，当该模式的 Activity 存在于某个栈中，后面任何激活该 Activity 都会重用该实例。</li>
 </ul>
-<p>###3. Activity 的缓存方法？<br>Activity 由于异常终止时，系统会调用 onSaveInstanceState()来保存 Activity 状态(<strong>onStop()之前和onPause()没有既定的时序关系</strong>)。当重建时，会调用 onRestoreInstanceState()，并且把 Activity 销毁时 onSaveInstanceState()方法所保存的 Bundle 对象参数同时传递给 onSaveInstanceState()和onCreate()方法。因此，可通过 onRestoreInstanceState()方法来恢复 Activity 的状态，该方法的调用时机是在 onStart()之后。<br><strong>onCreate()和 onRestoreInstanceState()的区别</strong>：onRestoreInstanceState()回调则表明其中Bundle对象非空，不用加非空判断。onCreate()需要非空判断。建议使用onRestoreInstanceState().</p>
-<p>###4. Service 的生命周期及两种启动方法。</p>
-<ul>
+<h3 id="3-Activity-的缓存方法？"><a href="#3-Activity-的缓存方法？" class="headerlink" title="3. Activity 的缓存方法？"></a>3. Activity 的缓存方法？</h3><p>Activity 由于异常终止时，系统会调用 onSaveInstanceState()来保存 Activity 状态(<strong>onStop()之前和onPause()没有既定的时序关系</strong>)。当重建时，会调用 onRestoreInstanceState()，并且把 Activity 销毁时 onSaveInstanceState()方法所保存的 Bundle 对象参数同时传递给 onSaveInstanceState()和onCreate()方法。因此，可通过 onRestoreInstanceState()方法来恢复 Activity 的状态，该方法的调用时机是在 onStart()之后。<br><strong>onCreate()和 onRestoreInstanceState()的区别</strong>：onRestoreInstanceState()回调则表明其中Bundle对象非空，不用加非空判断。onCreate()需要非空判断。建议使用onRestoreInstanceState().</p>
+<h3 id="4-Service-的生命周期及两种启动方法。"><a href="#4-Service-的生命周期及两种启动方法。" class="headerlink" title="4. Service 的生命周期及两种启动方法。"></a>4. Service 的生命周期及两种启动方法。</h3><ul>
 <li>startService 启动服务: 用于启动一个服务执行后台任务，停止服务使用 stopService().</li>
 <li>bindService 启动服务: 启动服务进行通信，停止服务使用 unbindService().<br><img src="http://upload-images.jianshu.io/upload_images/3985563-85614addbbec7a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="service 生命周期"></li>
 <li><strong>startService/stopService</strong><br>onCreate()-&gt;onStartCommand()-&gt;onDestroy()<br><strong>第一次调用会触发 onCreate()和 onStartCommand，之后每次启动服务只触发 onStartCommand()</strong><br><strong>无论 startService 多少次，stopService 一次就会停止服务</strong></li>
 <li><strong>bindService/unbindService</strong><br>onCreate-&gt;onBind()-&gt;onUnbind()-&gt;onDestroy()<br><strong>第一次 bindService 会触发 onCreate 和 onBind，以后每次 bindService 都不会触发任何回调</strong><br><strong>bindService 启动的生命周期依附于启动它的 Context</strong></li>
 </ul>
-<p>###5. Service 保活。</p>
-<ul>
+<h3 id="5-Service-保活。"><a href="#5-Service-保活。" class="headerlink" title="5. Service 保活。"></a>5. Service 保活。</h3><ul>
 <li>在 onStartCommond()中将返回值设置为 START_STICKY</li>
 <li>在 onDestroy()中重启 service</li>
 <li>黑色保活：不同 app 进程利用广播相互唤起。</li>
 <li>白色保活：启动前台 service</li>
 <li>灰色保活：利用系统漏洞启动前台 service。</li>
 </ul>
-<p>###6. 广播的两种注册方法，有什么区别。</p>
-<ul>
+<h3 id="6-广播的两种注册方法，有什么区别。"><a href="#6-广播的两种注册方法，有什么区别。" class="headerlink" title="6. 广播的两种注册方法，有什么区别。"></a>6. 广播的两种注册方法，有什么区别。</h3><ul>
 <li>动态注册：通过调用 Context.registerReceiver 进行注册，跟随组件的生命周期，特定时刻监听广播。</li>
 <li>静态注册：在 AndroidMainfest.xml 中声明，程序关闭后仍会调用，常驻广播，时刻监听广播。</li>
 </ul>
-<p>###7. Intent的使用方法及所传递的数据类型。</p>
-<ul>
+<h3 id="7-Intent的使用方法及所传递的数据类型。"><a href="#7-Intent的使用方法及所传递的数据类型。" class="headerlink" title="7. Intent的使用方法及所传递的数据类型。"></a>7. Intent的使用方法及所传递的数据类型。</h3><ul>
 <li>显示 Intent：按名指定要启动的组件</li>
 <li>隐示 Intent：不指定特定组件，声明要执行的常规操作，从而允许其他应用中组件来处理。</li>
 <li>Intent 可传递的数据类型：基本类型及其数组数据，String/CharSequence类型的数据及其数组数据，也可以传递Parcelable和Serializable类型的数据，以及它们的数组/列表数据。</li>
 </ul>
-<p>###8. ContentProvider使用方法。<br>进行跨进程通信，实现进程间得数据交互和共享。通过 Context 中 getContentResolver()获得实例，通过 Uri 匹配进行数据的增删改查。ContentProvider 使用表的形式来组织数据，无论数据的来源是什么，ContentProvider 都会认为是一种表，然后把数据组织成表格</p>
-<p>###9. Thread、AsyncTask、IntentService的使用场景与特点。</p>
-<ul>
+<h3 id="8-ContentProvider使用方法。"><a href="#8-ContentProvider使用方法。" class="headerlink" title="8. ContentProvider使用方法。"></a>8. ContentProvider使用方法。</h3><p>进行跨进程通信，实现进程间得数据交互和共享。通过 Context 中 getContentResolver()获得实例，通过 Uri 匹配进行数据的增删改查。ContentProvider 使用表的形式来组织数据，无论数据的来源是什么，ContentProvider 都会认为是一种表，然后把数据组织成表格</p>
+<h3 id="9-Thread、AsyncTask、IntentService的使用场景与特点。"><a href="#9-Thread、AsyncTask、IntentService的使用场景与特点。" class="headerlink" title="9. Thread、AsyncTask、IntentService的使用场景与特点。"></a>9. Thread、AsyncTask、IntentService的使用场景与特点。</h3><ul>
 <li>Thread线程，独立运行与于 Activity 的，当 Activity 被 finish 后，如果没有主动停止 Thread 或者 run 方法没有执行完，其会一直执行下去。</li>
 <li>AsyncTask 封装了两个线程池和一个 Handler，（SerialExecutor用于排队，THREAD_POOL_EXECUTOR为真正的执行任务，Handler 将工作线程切换到主线程），其必须在 UI 线程中创建，execute 方法必须在 UI 线程中执行，一个任务实例只允许执行一次，执行多次将抛出异常，用于网络请求或者简单数据处理。</li>
 <li>IntentService：处理异步请求，实现多线程，在 onHandleIntent 中处理耗时操作，多个耗时任务会依次执行，执行完毕后自动结束。</li>
 </ul>
-<p>###10. 五种布局: FrameLayout、LinearLayout、 AbsoluteLayout、RelativeLayout、TableLayout 各自特点及绘制效率对比。</p>
-<ul>
+<h3 id="10-五种布局-FrameLayout、LinearLayout、-AbsoluteLayout、RelativeLayout、TableLayout-各自特点及绘制效率对比。"><a href="#10-五种布局-FrameLayout、LinearLayout、-AbsoluteLayout、RelativeLayout、TableLayout-各自特点及绘制效率对比。" class="headerlink" title="10. 五种布局: FrameLayout、LinearLayout、 AbsoluteLayout、RelativeLayout、TableLayout 各自特点及绘制效率对比。"></a>10. 五种布局: FrameLayout、LinearLayout、 AbsoluteLayout、RelativeLayout、TableLayout 各自特点及绘制效率对比。</h3><ul>
 <li>FrameLayout: Android 中最简单布局，所有控件默认出现在左上角，可以使用 layout_margin，layout_gravity 等属性控制子控件的相对布局位置。</li>
 <li>LinearLayout: 一行或者一列布局空间，可使用 orientation=horizontal|vertical 来控制布局方式。</li>
 <li>AbsoluteLayout: 自定义空间的x，y 来调整位置。</li>
@@ -451,14 +441,13 @@
 </li>
 <li>TableLayout: 将字元素的位置以表格形式进行布局。</li>
 </ul>
-<p>###11. Android的数据存储形式。</p>
-<ul>
+<h3 id="11-Android的数据存储形式。"><a href="#11-Android的数据存储形式。" class="headerlink" title="11. Android的数据存储形式。"></a>11. Android的数据存储形式。</h3><ul>
 <li>SQLite 数据库存储</li>
 <li>文件存储</li>
 <li>SharedPreference 存储</li>
 <li>网络存储</li>
 </ul>
-<p>###12. SQlite 的基本操作<br>Android 提供了 SQLiteOpenHelper 类，通过该类可以简单控制数据库的创建和升级。</p>
+<h3 id="12-SQlite-的基本操作"><a href="#12-SQlite-的基本操作" class="headerlink" title="12. SQlite 的基本操作"></a>12. SQlite 的基本操作</h3><p>Android 提供了 SQLiteOpenHelper 类，通过该类可以简单控制数据库的创建和升级。</p>
 <ul>
 <li>onCreate(): 创建数据库</li>
 <li>onUpgrade(): 升级数据库</li>
@@ -471,40 +460,33 @@
 <li>delete(): 删除数据</li>
 <li>query(): 查询数据</li>
 </ul>
-<p>###13. Android中的MVC模式。</p>
-<ul>
+<h3 id="13-Android中的MVC模式。"><a href="#13-Android中的MVC模式。" class="headerlink" title="13. Android中的MVC模式。"></a>13. Android中的MVC模式。</h3><ul>
 <li>Model（模型）</li>
 <li>View（视图）</li>
 <li>Controler（控制器）</li>
 </ul>
 <p>View 传送指令到 Controller，其完成逻辑后通知 Model 改变状态，Model 将新数据更新到 View。<br>所有通信都为单向。<br>接受指令时，一是通过 View 接受指令并传递给 Controller；另一种是直接通过 Controller 接受指令。</p>
-<p>###14. Merge、ViewStub 的作用。</p>
-<ul>
+<h3 id="14-Merge、ViewStub-的作用。"><a href="#14-Merge、ViewStub-的作用。" class="headerlink" title="14. Merge、ViewStub 的作用。"></a>14. Merge、ViewStub 的作用。</h3><ul>
 <li>Merge: 减少视图层级，可以删除多余的层级，优化 UI。</li>
 <li>ViewStub: 按需加载，减少内存使用量、加快渲染速度。<strong>不支持 merge 标签</strong></li>
 </ul>
-<p>###15. Json有什么优劣势。</p>
-<p>####优点</p>
-<ul>
+<h3 id="15-Json有什么优劣势。"><a href="#15-Json有什么优劣势。" class="headerlink" title="15. Json有什么优劣势。"></a>15. Json有什么优劣势。</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
 <li>轻量级的数据交换格式</li>
 <li>读写更加容易</li>
 <li>易于机器的解析和生成</li>
 </ul>
-<p>####缺点</p>
-<ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
 <li>语义性较差，不如 xml 直观</li>
 </ul>
-<p>###16. 动画有哪两类，各有什么特点？</p>
-<ul>
+<h3 id="16-动画有哪两类，各有什么特点？"><a href="#16-动画有哪两类，各有什么特点？" class="headerlink" title="16. 动画有哪两类，各有什么特点？"></a>16. 动画有哪两类，各有什么特点？</h3><ul>
 <li>传统动画：帧动画和补间动画。</li>
-<li>属性动画。<br>####区别</li>
+<li>属性动画。<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4></li>
 <li>属性动画才是真正的实现了view的移动，补间动画对view的移动更像是在不同地方绘制了一个影子，实际的对象还是处于原来的地方。</li>
 <li>当动画的repeatCount设置为无限循环时，如果在Activity退出时没有及时将动画停止，属性动画会导致Activity无法释放而导致内存泄漏，而补间动画却没有问题。</li>
 <li>xml 文件实现的补间动画，复用率极高。在Activity切换，窗口弹出时等情景中有着很好的效果。</li>
 <li>使用帧动画时需要注意，不要使用过多特别大的图，容易导致内存不足。</li>
 </ul>
-<p>###17. Handler、Loop消息队列模型，各部分的作用。</p>
-<p>Android消息机制包含: MessageQuene、Handler、Looper、Message.</p>
+<h3 id="17-Handler、Loop消息队列模型，各部分的作用。"><a href="#17-Handler、Loop消息队列模型，各部分的作用。" class="headerlink" title="17. Handler、Loop消息队列模型，各部分的作用。"></a>17. Handler、Loop消息队列模型，各部分的作用。</h3><p>Android消息机制包含: MessageQuene、Handler、Looper、Message.</p>
 <ul>
 <li>Message: 需要春娣的消息，可以传递数据。</li>
 <li>MessageQuene: 消息队列，通过单链表数据结构来维护消息列表，（投递和删除消息）。</li>
@@ -512,16 +494,14 @@
 <p>Handler.sendMessage 发送消息<br>Handler.handleMessage 处理消息</p>
 </blockquote>
 </li>
-<li>Looper: 不断从消息队里中读取消息，按分发机制将消息分发给目标处理者。<br>####MessageQuene、Handler 和 looper 三者之间的关系：<br>每个线程中只能存在一个Looper，保存在ThreadLocal中。主线程（UI线程）已经创建了一个Looper，所以在主线程中不需要再创建Looper，其他线程中需要创建Looper。每个线程中可以有多个Handler，即一个 Looper 可以处理来自多个 Handler 的消息。 Looper 中维护一个 MessageQueue，来维护消息队列，消息队列中的 Message 可以来自不同的 Handler。</li>
+<li>Looper: 不断从消息队里中读取消息，按分发机制将消息分发给目标处理者。<h4 id="MessageQuene、Handler-和-looper-三者之间的关系："><a href="#MessageQuene、Handler-和-looper-三者之间的关系：" class="headerlink" title="MessageQuene、Handler 和 looper 三者之间的关系："></a>MessageQuene、Handler 和 looper 三者之间的关系：</h4>每个线程中只能存在一个Looper，保存在ThreadLocal中。主线程（UI线程）已经创建了一个Looper，所以在主线程中不需要再创建Looper，其他线程中需要创建Looper。每个线程中可以有多个Handler，即一个 Looper 可以处理来自多个 Handler 的消息。 Looper 中维护一个 MessageQueue，来维护消息队列，消息队列中的 Message 可以来自不同的 Handler。</li>
 </ul>
 <p>当调用 handler.sendMessage()发送 message 时，实际上发送到与当前线程绑定的 MessageQuene 中，然后当前线程绑定的 Looper 不断从 MessageQueue 取出新的 Message，调用 msg.target.disspatchMessage(msg) 方法将消息分发到与 Message 绑定的 handler.handleMessage()中。</p>
-<p>###18. 怎样退出终止App。</p>
-<ul>
+<h3 id="18-怎样退出终止App。"><a href="#18-怎样退出终止App。" class="headerlink" title="18. 怎样退出终止App。"></a>18. 怎样退出终止App。</h3><ul>
 <li>创建一个集合类对所有活动进行管理，ActivityCollector，通过 list 来管理 Activity。</li>
 <li>killProcess(android.os.Process.myPid())杀死当前程序进程。</li>
 </ul>
-<p>###19. Asset目录与res目录的区别。</p>
-<ul>
+<h3 id="19-Asset目录与res目录的区别。"><a href="#19-Asset目录与res目录的区别。" class="headerlink" title="19. Asset目录与res目录的区别。"></a>19. Asset目录与res目录的区别。</h3><ul>
 <li>assets：不会在 R 文件中生成相应标记，存放到这里的资源在打包时会打入程序安装包中。（通过 AssetManager 类访问这些文件）</li>
 <li>res：会在 R 文件中生成 id 标记，资源在打包时如果使用到则打包到安装包中，未使用到不会打入安装包中。</li>
 </ul>
@@ -558,8 +538,7 @@
 </tr>
 </tbody>
 </table>
-<p>###20. Android怎么加速启动Activity。 </p>
-<ol>
+<h3 id="20-Android怎么加速启动Activity。"><a href="#20-Android怎么加速启动Activity。" class="headerlink" title="20. Android怎么加速启动Activity。"></a>20. Android怎么加速启动Activity。</h3><ol>
 <li>onCreate()中不执行耗时操作</li>
 </ol>
 <ul>
@@ -572,22 +551,32 @@
 <li>提高 Adapter 和 AdapterView 的效率</li>
 <li>优化布局文件</li>
 </ol>
-<p>###21. Android性能优化方法</p>
-<ol>
-<li>布局优化：尽量减少布局文件的层级<ul>
+<h3 id="21-Android性能优化方法"><a href="#21-Android性能优化方法" class="headerlink" title="21. Android性能优化方法"></a>21. Android性能优化方法</h3><ol>
+<li>布局优化：尽量减少布局文件的层级</li>
+</ol>
+<blockquote>
+<ul>
 <li>删除布局中无用的控件和层次，有选择的使用性能较低的 ViewGroup</li>
 <li>采用标签，ViewStub，布局重用可降低布局的层级（ViewStub提供了按需加载的功能，当需要时才会将 ViewStub 中布局加载到内存，提高了初始化效率）</li>
 <li>避免过度绘制</li>
 </ul>
-</li>
-<li>绘制优化：View 的 onDraw 方法避免执行大量操作。<ul>
+</blockquote>
+<ol>
+<li>绘制优化：View 的 onDraw 方法避免执行大量操作。</li>
+</ol>
+<blockquote>
+<ul>
 <li>onDraw 中不要创建新的布局对象。</li>
 <li>onDraw 中不做耗时任务，大量循环十分抢占 cpu 时间片，造成 View 的绘制不流畅。</li>
 </ul>
-</li>
-<li>内存泄漏优化<ul>
+</blockquote>
+<ol>
+<li><p>内存泄漏优化</p>
+<ul>
 <li>避免写出内存泄漏代码</li>
-<li>通过分析工具（MAT、LeakCannary）找出潜在的内存泄漏方法，然后解决。<blockquote>
+<li>通过分析工具（MAT、LeakCannary）找出潜在的内存泄漏方法，然后解决。</li>
+</ul>
+<blockquote>
 <p>导致内存泄漏的原因:</p>
 <ol>
 <li>集合类的泄漏</li>
@@ -597,9 +586,153 @@
 </ol>
 </blockquote>
 </li>
-</ul>
+<li><p>响应速度的优化：避免在主线程做耗时的操作。</p>
+</li>
+<li><p>ListView/RecyclerView优化：</p>
+<blockquote>
+<ol>
+<li>使用 viewHolder 模式来提高效率</li>
+<li>异步加载：耗时操作放在异步线程</li>
+<li>滑动时停止加载和分页加载</li>
+</ol>
+</blockquote>
+</li>
+<li><p>线程优化：采用线程池，避免程序中存在大量 Thread 。</p>
+</li>
+<li><p>其他性能优化：</p>
+<blockquote>
+<ol>
+<li>不要过多的创建对象。</li>
+<li>不要过多使用枚举类，枚举占用内存空间要比整型大。</li>
+<li>常量使用 static final 修饰。</li>
+<li>使用 Android 特有的数据结构。</li>
+<li>适当采用软引用和弱引用。</li>
+<li>采用内存缓存和磁盘缓存。</li>
+<li>尽量采用静态内部类，可避免潜在由于内部类导致的内存泄漏。</li>
+</ol>
+</blockquote>
 </li>
 </ol>
+<h3 id="22-Android中软引用与弱引用的应用场景。"><a href="#22-Android中软引用与弱引用的应用场景。" class="headerlink" title="22. Android中软引用与弱引用的应用场景。"></a>22. Android中软引用与弱引用的应用场景。</h3><p>Java 引用类型分类：<br><img src="https://gw.alicdn.com/tps/TB1U6TNLVXXXXchXFXXXXXXXXXX-644-546.jpg" alt="Java引用分类"><br>在Android应用的开发中，为了防止内存溢出，在处理一些占用内存大而且声明周期较长的对象时候，可以尽量应用软引用和弱引用技术。</p>
+<p>软/弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。利用这个队列可以得知被回收的软/弱引用的对象列表，从而为缓冲器清除已失效的软/弱引用。</p>
+<p>如果只是想避免 OOM 异常的发生，则可以使用软引用。如果对于应用的性能更在意，想尽快回收一些占用内存比较大的对象，则可以使用弱引用。</p>
+<p>可以根据对象是否经常使用来判断选择软引用还是弱引用。如果该对象可能会经常使用的，就尽量用软引用。如果该对象不被使用的可能性更大些，就可以用弱引用。</p>
+<h3 id="23-Bitmap-压缩策略"><a href="#23-Bitmap-压缩策略" class="headerlink" title="23. Bitmap 压缩策略"></a>23. Bitmap 压缩策略</h3><ol>
+<li><p>加载 Bitmap 的方式：</p>
+<ul>
+<li>BitmapFactory 四类方法：</li>
+</ul>
+<blockquote>
+<ul>
+<li>decodeFile(文件系统)</li>
+<li>decodeResourece(资源)</li>
+<li>decodeStream(输入流)</li>
+<li>decodeByteArray(字节数)</li>
+</ul>
+</blockquote>
+</li>
+<li><p>BitmapFactory.opeions 参数</p>
+</li>
+</ol>
+<ul>
+<li>inSampleSize 采样率，对图片高和宽进行缩放，以最小比进行缩放（一般取值为2的指数）。<strong>通常是根据图片宽高实际的大小/需要的宽高大小，分别计算出宽和高的缩放比。但应该取其中最小的缩放比，避免缩放图片太小，到达指定控件中不能铺满，需要拉伸从而导致模糊。</strong></li>
+<li>inJustDecodeBounds 获取图片的宽高信息，交给 inSampleSize 参数选择缩放比。<strong>通过inJustDecodeBounds=true，然后加载图片就可以实现只解析图片的宽高信息，并不会真正的加载图片，所以这个操作是轻量级的。当获取了宽高信息，计算出缩放比后，然后在将inJustDecodeBounds=false,再重新加载图片，就可以加载缩放后的图片。</strong></li>
+</ul>
+<ol>
+<li>高效加载 Bitmap 的流程</li>
+</ol>
+<ul>
+<li>将 BitmapFactory.Options 的 inJustDecodeBounds 参数设为 true 并加载图片</li>
+<li>从 BitmapFactory.Options 中取出图片原始的宽高信息，对应于 outWidth 和 outHeight 参数</li>
+<li>根据采样率规则并结合目标 view 的大小计算出采样率 inSampleSize</li>
+<li>将 BitmapFactory.Options 的 inJustDecodeBounds 设置为 false 重新加载图片</li>
+</ul>
+<h3 id="24-自定义View过程：onMeasure-、onLayout-、onDraw"><a href="#24-自定义View过程：onMeasure-、onLayout-、onDraw" class="headerlink" title="24. 自定义View过程：onMeasure()、onLayout()、onDraw()"></a>24. 自定义View过程：onMeasure()、onLayout()、onDraw()</h3><ul>
+<li>onMeasure()方法：单一 View，一般重写此方法，针对 wrap_content 情况，规定 View 默认的大小值，避免于 match_parent 情况一致。ViewGroup，若不重写，就会执行和单子View 中相同逻辑，不会测量子 View。一般会重写 onMeasure()方法，循环测量子View。</li>
+<li>onLayout()方法:单一 View，不需要实现该方法。ViewGroup 必须实现，该方法是个抽象方法，实现该方法，来对子 View 进行布局。</li>
+<li>onDraw()方法：无论单一View，或者ViewGroup都需要实现该方法，因其是个空方法.</li>
+</ul>
+<h3 id="25-事件分发机制"><a href="#25-事件分发机制" class="headerlink" title="25. 事件分发机制"></a>25. 事件分发机制</h3><p><a href="http://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="external">事件分发机制详解</a></p>
+<h3 id="26-Android长连接，怎么处理心跳机制。"><a href="#26-Android长连接，怎么处理心跳机制。" class="headerlink" title="26. Android长连接，怎么处理心跳机制。"></a>26. Android长连接，怎么处理心跳机制。</h3><ul>
+<li>长连接：长连接是建立连接之后, 不主动断开. 双方互相发送数据, 发完了也不主动断开连接, 之后有需要发送的数据就继续通过这个连接发送.</li>
+<li>心跳包：其实主要是为了防止NAT超时，客户端隔一段时间就主动发一个数据，探测连接是否断开</li>
+<li>服务器处理心跳包：假如客户端心跳间隔是固定的, 那么服务器在连接闲置超过这个时间还没收到心跳时, 可以认为对方掉线, 关闭连接. 如果客户端心跳会动态改变,  应当设置一个最大值, 超过这个最大值才认为对方掉线. 还有一种情况就是服务器通过TCP连接主动给客户端发消息出现写超时, 可以直接认为对方掉线.</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=207243549&amp;idx=1&amp;sn=4ebe4beb8123f1b5ab58810ac8bc5994&amp;scene=4#wechat_redirect" target="_blank" rel="external">Android微信智能心跳方案</a></li>
+</ul>
+<h3 id="27-Zygote的启动过程"><a href="#27-Zygote的启动过程" class="headerlink" title="27. Zygote的启动过程"></a>27. Zygote的启动过程</h3><p>在Android系统里面，zygote是一个进程的名字。Android是基于Linux System的，当你的手机开机的时候，Linux的内核加载完成之后就会启动一个叫“init“的进程。在Linux System里面，所有的进程都是由init进程fork出来的，我们的zygote进程也不例外。</p>
+<h3 id="28-Android-IPC-Binder原理。"><a href="#28-Android-IPC-Binder原理。" class="headerlink" title="28. Android IPC:Binder原理。"></a>28. Android IPC:Binder原理。</h3><ul>
+<li>IPC:<br><img src="http://upload-images.jianshu.io/upload_images/3985563-a3722ee387793114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IPC机制"><br>不同进程之间彼此是不能共享的，而内核空间却是可共享的。Client进程向Server进程通信，利用进程间可共享的内核内存空间来完成底层通信工作的，Client端与Server端进程往往采用ioctl等方法跟内核空间的驱动进行交互。</li>
+<li>Binder原理:<br>Binder通信采用C/S架构，包含Client、Server、ServiceManager以及binder驱动，其中ServiceManager用于管理系统中的各种服务。架构图如下所示：<br><img src="http://upload-images.jianshu.io/upload_images/3985563-5ff2c4816543c433.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Binder同学架构图"></li>
+</ul>
+<blockquote>
+<h4 id="Binder-四个角色："><a href="#Binder-四个角色：" class="headerlink" title="Binder 四个角色："></a>Binder 四个角色：</h4><ol>
+<li>Client进程：使用服务的进程</li>
+<li>server 进程：提供服务的进程</li>
+<li>ServiceManager 进程：将字符型是的 Binder 名字转为 Client 中对该 Binder 的引用，使得 Client 能够通过 Binder 名字获取到 Server 中 Binder 实体的引用。</li>
+<li>Binder 驱动：进程间 Binder 通信的建立，Binder 在进程间的传递，Binder 引用计数管理，数据包在进程间传递和交互等一系列底层支持。<h4 id="Binder-运行机制："><a href="#Binder-运行机制：" class="headerlink" title="Binder 运行机制："></a>Binder 运行机制：</h4></li>
+<li>注册服务：Server 在 ServiceManager 注册服务</li>
+<li>获取服务：Client 从 ServiceManager 获取相应的 Service</li>
+<li>使用服务：Client 根据得到的 Service 信息建立与 Service 所在的 Server 进程通信的通路可与 Server 进行交互。</li>
+</ol>
+</blockquote>
+<h3 id="29-Android-5-0，6-0，7-0-8-0新特性。"><a href="#29-Android-5-0，6-0，7-0-8-0新特性。" class="headerlink" title="29. Android 5.0，6.0，7.0 8.0新特性。"></a>29. Android 5.0，6.0，7.0 8.0新特性。</h3><ul>
+<li>5.0:</li>
+</ul>
+<ol>
+<li>Material Design</li>
+<li>支持多种设备</li>
+<li>全新通知中心</li>
+<li>支持64位 ART 虚拟机</li>
+<li>电池续航改进</li>
+<li>全新“最近应用程序”</li>
+<li>安全性改进</li>
+<li>不同数据独立保存</li>
+<li>改进搜索</li>
+<li>支持蓝牙4.1、USB Audio、多人分享等</li>
+</ol>
+<ul>
+<li>6.0：</li>
+</ul>
+<ol>
+<li>动态权限管理</li>
+<li>系统层支持指纹识别</li>
+<li>APP 关联</li>
+<li>Android Pay</li>
+<li>电源管理</li>
+<li>TF 卡默认存储</li>
+</ol>
+<ul>
+<li>7.0：</li>
+</ul>
+<ol>
+<li>分屏多任务</li>
+<li>下拉快捷开关</li>
+<li>新通知消息</li>
+<li>夜间模式</li>
+<li>流量保护模式</li>
+<li>全新设置样式</li>
+<li>改进 Doze 休眠机制</li>
+<li>系统级电话黑名单</li>
+<li>菜单键快速切换应用</li>
+</ol>
+<ul>
+<li>8.0：</li>
+</ul>
+<ol>
+<li>画中画</li>
+<li>通知标志</li>
+<li>自动填充框架</li>
+<li>系统优化</li>
+<li>后台限制</li>
+<li>等等优化很多<br><a href="https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;mid=2652044487&amp;idx=1&amp;sn=ce2de5e0f31ffe526667156f2ac26ce9&amp;scene=21#wechat_redirect" target="_blank" rel="external">Android 8.0</a></li>
+</ol>
+<hr>
+<p>致谢：<br><a href="https://lrh1993.gitbooks.io" target="_blank" rel="external">Android 校招面试指南</a><br><a href="https://github.com/francistao/LearningNotes" target="_blank" rel="external">Android 开发工程师面试指南</a><br>特别感谢：stormzhang，关注张哥以来分享的东西对自己帮助很大。</p>
+<ul>
+<li><a href="http://stormzhang.com" target="_blank" rel="external"> stormzhang博客</a></li>
+<li>公众号<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&amp;size=102&amp;__biz=MzA4NTQwNDcyMA==&amp;mid=2650662592&amp;idx=1&amp;sn=39e052f50167bd20dbf50434db2100b1&amp;send_time=" alt="stormzhang"></li>
+<li>知识星球<img src="https://ws1.sinaimg.cn/large/005FndVTly1fjk1gye0n2j307e07ywf0.jpg" width="130"></li>
+</ul>
 
     
 
@@ -763,7 +896,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/情感分析/">情感分析<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android面试/">Android面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/情感分析/">情感分析<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
