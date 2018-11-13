@@ -10,7 +10,7 @@
     
     <title>
         
-            归档 | 
+            每日算法（反转整数）-11.13 | 
         
         Panda&#39;s Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="Andori开发工程师.">
-    <meta name="keywords" content="Android开发工程师，IT男">
+    <meta name="keywords" content="Android开发工程师，IT男,学习,算法">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://zhaoxueli.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Panda&#39;s Blog">
+    <meta property="og:title" content="每日算法（反转整数）-11.13 | Panda&#39;s Blog">
     <meta property="og:description" content="Andori开发工程师.">
-    
+    <meta property="og:article:tag" content="学习"> <meta property="og:article:tag" content="算法"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -203,366 +203,264 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-        
-    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反转整数"><span class="post-toc-number">1.</span> <span class="post-toc-text">反转整数</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/11/13/每日算法（反转数组）/">每日算法（反转整数）-11.13</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            今天下班时间比较晚，回来后只学习了一道算法，反转整数，下面开始记录题以及自己的分析。
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/11/13/每日算法（反转数组）/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>11月 13, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/学习/">学习</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2018/11/13/每日算法（反转数组）/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/11/12/每日算法（两数之和、两数相加）/">每日算法（两数之和、两数相加）-11.12</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            今天开始记录每天学习一道两道的算法题，由简入难。今天一共学习了两道算法，一道简单一道中等，分别为两数之和、两数相加，下面开始记录题以及自己的...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/11/12/每日算法（两数之和、两数相加）/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>11月 12, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/学习/">学习</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2018/11/12/每日算法（两数之和、两数相加）/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/14/Android面试总结/">Android面试知识点总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-仅用作与记录自己看到的知识点总结，图片来源于网络 blog。
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/14/Android面试总结/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>9月 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Android面试/">Android面试</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2017/09/14/Android面试总结/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/">运用约束性统计机器翻译进行 Aspect-Level 的跨语言情感分类</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-本文是对 Aspect-Level Cross-lingual Sentiment Classiﬁcation with Constrained SMT 论文的 的一些笔记及理解，方便自己理解以及其他人的参考。
-如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！
-由于自己英语能力有限，其中一部分词语可能理解有误，希望指正！
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>3月 20, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/情感分析/">情感分析</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2017/03/20/运用约束性统计机器翻译进行-Aspect-Level-的跨语言情感分类-5/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/06/基于-Aspect-的情感分析/">基于 Aspect 的情感分析</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-写本文的目的在于记录自己在阅读 Bing Liu 的 Sentiment Analysis and Opinion Mining  的一些笔记以及对文章中所写信息的理解，方便自己理解以及其他人的参考。
-本篇内容主要是自己对该书第五章的内容 Aspect-based Sentiment Analysis 的理解，如有其他人看到我的博客的内容后请在留言处留下自己的意见和对我所理解的错误的指正，谢谢！
-由于自己英语能力有限，其中一大部分词语可能理解有误，希望指正！
-
-基本概念在传统的文档或句子级别的情感分析方面，在分析是主要有五部分组成，分别是 ( ei, aij, sijkl, hk, tl ). 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/06/基于-Aspect-的情感分析/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/china.png" width="44px" height="44px" alt="Xueli's avatar">
-            </div>
-            <div>
-                <strong>Xueli</strong>
-                <span>3月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/情感分析/">情感分析</a>
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2017/03/06/基于-Aspect-的情感分析/" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                每日算法（反转整数）-11.13
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/china.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Xueli</strong>
+        <span>11月 13, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3awU7DQAwE0P7/T8MVCWhmvKkouy+nqk2JXw9Y9uzj48jrgY2NjY2NjY2Njf2W7Ed8fb9/9k7y/tdPfwCUNWNjY2OfwL741x/f81vpOek5bKVmbGxs7BPY7WOS0tebZfI6qRkbGxsb+zlm9jppV9jY2NjYr2AnI0dS+vOnt/VgY2NjYydDRfGYuAmtDzkv36VhY2Njvz37FYueV7/+g3wbGxsb+y3Z7TULX+/6cZcqx8bGxt6UnYS4K4uelcXTUruaTWDY2NjY/5ydr3LyppLEAAl4FvdiY2Njn8Nuj9EkLWR2cKdtgUujCDY2NvYW7LbQvLgofA3+Wj6oXDwdGxsbe1N23qjypc/62DALJ27It7GxsbH/ITtvJ7PBI1ni5/ckS6t6FMHGxsbegr0SrxbDQBzNrt8ZNTBsbGzsrdmz6DdqJPEP166ZLu7ExsbG3pS9HtDOSmlXUTeMPdjY2Nibstumkge37QIoD5jbIQcbGxv7HHayYEoC4HzR3wbMSz8NNjY29tbsfMxoB5L8iM8sJBgevsTGxsbeiD07WDNbKrXHOtth5uK72NjY2Fuz19f6dRE3xb35YU1sbGzsvdlJaJoselYGkgJQHgbFxsbG3pudl5Iv6NsFULJaSp54EXJgY2Njb8puVzmzhdH6+JE3WmxsbOwz2e3KZhbc5sdx7qoNGxsb+wT2CnV2BKddLc2iBWxsbOwz2bMi2pA4P7Jz1xEibGxs7L3ZbeA6GyFm7W22kMLGxsY+jd1eSfNoQ+I8AGibIjY2NvYJ7PYgY3uspx1F8u/WzRIbGxt7a/YsMMjHgKQdJryVqAAbGxv7BHZ+yHLWbPKWmTy3HV2wsbGxsWcNKWmEyadthdjY2NjY7RhwbzyQBM/Jz4qNjY19GrtdKrUBbXuI565mho2NjX0Ce2XREzWPhej3rnEIGxsbe1f2ORc2NjY2NjY2Njb221yfpmK5zOG81ykAAAAASUVORK5CYII=">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/学习/">学习</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/算法/">算法</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/11/13/每日算法（反转数组）/" class="leancloud-views_num" data-flag-title="每日算法（反转整数）-11.13">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=每日算法（反转整数）-11.13&url=http://zhaoxueli.win//2018/11/13/每日算法（反转数组）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=每日算法（反转整数）-11.13&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2018/11/13/每日算法（反转数组）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>今天下班时间比较晚，回来后只学习了一道算法，反转整数，下面开始记录题以及自己的分析。</p>
+<h2 id="反转整数"><a href="#反转整数" class="headerlink" title="反转整数"></a>反转整数</h2><blockquote>
+<p>给定一个 32 位有符号整数，将整数中的数字进行反转。</p>
+</blockquote>
+<p>示例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: 123</div><div class="line">输出: 321</div></pre></td></tr></table></figure></p>
+<p>示例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: -123</div><div class="line">输出: -321</div></pre></td></tr></table></figure></p>
+<p>示例 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: 120</div><div class="line">输出: 21</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>给定一个 32 位有符号整数，将整数中的数字进行反转。<br>假设环境只能存储32位有符号整数，其数值范围是 [−2^31,  2^31−1]。根据这个假设，如果反转后的整数溢出，则返回 0。</p>
+</blockquote>
+<p>根据题目判断类似于反转字符串，首先自己不假思索的用StringBuilder进行了实现，但是这样的话自己认为根本就不叫算法题，因此自己重新思考去实现，思路如下：<br>首先对一个数进行整除然后while循环，之后再进行赋值操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int num = 0;</div><div class="line">while(x!=0)&#123;</div><div class="line">  num = num*10+x%10;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是该方法并没有进行越界处理，当写出来之后查看解析发现处理的很巧妙：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public int reverse(int x) &#123;</div><div class="line">        int num = 0;</div><div class="line">        while (x != 0) &#123;</div><div class="line">            int pop = x % 10;</div><div class="line">            x /= 10;</div><div class="line">            if (num &gt; Integer.MAX_VALUE/10 || (num == Integer.MAX_VALUE / 10 &amp;&amp; pop &gt; 7)) return 0;</div><div class="line">            if (num &lt; Integer.MIN_VALUE/10 || (num == Integer.MIN_VALUE / 10 &amp;&amp; pop &lt; -8)) return 0;</div><div class="line">            num = num * 10 + pop;</div><div class="line">        &#125;</div><div class="line">        return num;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>思想是如果num大于Integer的最大边界/10则后面其无论加多少值都为越界，同样的道理因为题目规定最大值为2^31-1为2147483647，如果num==Integer.MAX_VALUE/10，则pop大于7之后则将越界；负数同样为该原理，查看解析后发现处理很是巧妙，自己需要学的地方还是很多，继续加油！</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread"
+        data-thread-key="2018/11/13/每日算法（反转数组）/"
+        data-url="http://zhaoxueli.win/2018/11/13/每日算法（反转数组）/"
+        data-title="每日算法（反转整数）-11.13">
+    </div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/11/12/每日算法（两数之和、两数相加）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
