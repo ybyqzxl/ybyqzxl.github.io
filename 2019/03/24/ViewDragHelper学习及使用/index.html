@@ -10,6 +10,8 @@
     
     <title>
         
+            ViewDragHelper学习及使用 | 
+        
         Panda&#39;s Blog
     </title>
 
@@ -25,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="Andori开发工程师.">
-    <meta name="keywords" content="Android开发工程师，IT男">
+    <meta name="keywords" content="Android开发工程师，IT男,Android 学习">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -46,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://zhaoxueli.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Panda&#39;s Blog">
+    <meta property="og:title" content="ViewDragHelper学习及使用 | Panda&#39;s Blog">
     <meta property="og:description" content="Andori开发工程师.">
-    
+    <meta property="og:article:tag" content="Android 学习"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -203,6 +205,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -228,7 +265,7 @@
         
     
             <p class="article-headline-p">
-                
+                ViewDragHelper学习及使用
             </p>
         </div>
 
@@ -247,7 +284,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Xueli</strong>
-        <span>3月 17, 2017</span>
+        <span>3月 24, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -268,7 +305,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB9klEQVR42u3aQW7EIAwF0Nz/0u22UhXmG4gywMuqGs0QPxausbl+tnguDAwMDAwMDIyvYVzxc/f9v5/frfz/85EYMDAwzmR8SG1NRgJoY6oxYGBgnMzIk2k73DtegiwkdAwMDIzma9rFX7vsy9fEwMDAGFoiCCg5pmJgYGA8cYiNWvYx5rWzOAYGxoKM6mDgib9fmG9gYGAswihfcSiWdH1jgMfvjGBgYCzFaLfPkisX1W9GZV+wAgYGxmmMaursGwmMrImBgYGRN+urVy6qyb29MgYGBkZf+qv+tq+UnPx/AwMDYylGnlLzUJJtSrbmw0ZgYGAcwxi5ClZ9cbJyvsUYGBjnMPIGWT6GHGnDTbhsgYGBsR1jpHQbSdnVArSz3YaBgbEdo3rxNA+xnWqrjTYMDIzTGHnQyQghT6lR6z8fYWJgYGzN6Gui5c21nFTeFAwMjGMYcweZfSOHzkMvBgbGYYxq2Zek4DylTku4GBgYWzOqJV3SMus77k6YxGJgYGzHqCa+PPQ8rGT98nwDAwNjO8Z4a6w6DKgeZaOEi4GBcQDjiSNrskI1KWNgYGDkV8RGxgAJvrM0xMDAwIhfVt2OcsrGwMA4kpGkxbzUSw6xeTtvcrsNAwNjQcaswUDfIXZaaYiBgbEpY90HAwMDAwMDA+PV5xeQjl6T0xgnhAAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3aW27jMBAEQN//0rsHyFrp5shYmSx+CbEtsSggg3m8/hy5XtjY2NjY2NjY2NiPZL/ilXz/Hw/78fd397y+nuwZGxsb+wT2L//6A/a7T6/BLWltz9jY2NjnsJPHvMNcb/36iflv1/aMjY2NjT1PJxJeGyaxsbGxsScBrA1ybSrSXmNjY2NjtwWaSZk+R7bH+sFaGjY2Nvbj2W2j9wnX/6G/jY2Njf1I9micMQ4kSTBLguVot9jY2NibsvPCfTtwMz+sKMHIB4awsbGxN2UnRZz8gPKy0VpDYhImsbGxsXdlv5ZWnqhcj+O0h54fx221NGxsbOwvYbfN12Skst1uW6JKXhs2Njb2Oex8KCdJNtZaAu1wT1u6wsbGxj6BPS/cRGX6MvzkL6Zu9GJjY2NvxE6ShHkAa5HJfm7IwLCxsbG/nJ03ZSdpw11jN23zABsbG/scdh5OPjFSsxiQyhEibGxs7F3ZCezeENWutkQ1qqVhY2NjfyG7DWN5YrCWeOQt5zq8YWNjY2/KzgPAWnLSNhvaNCMPwNjY2NjnsNtbT8Jb3opYC67Y2NjYJ7PXSvD5r9omQdJy/uX72NjY2JuyRzeKA888OK29HmxsbOwz2cmtF8s68d0mha1iUgkbGxt7I/ZaoT8JY8mBJuGzHSqKUhFsbGzsLdiTUk67lXkpqm0wYGNjY5/GnqQl+cG1KVBe8CpSEWxsbOzt2GsHMT++SbOhDofY2NjYB7Dbgk4ygpPz2rSkTqKwsbGxN2W3695Wbptg5AeEjY2NfQ67DQltMyAvPLV3y1MgbGxs7BPYk/J9OzozaT+0SQs2Njb2aew8aLVjPTkgD3vtU7CxsbGx24QhCWD51ttWBDY2NjZ22wZIjqZtEqylItjY2Ngns/OwtFb6XxvfrItHn6ilYWNjYz+evVayWUsJ5k3ctcEdbGxs7F3Z5yxsbGxsbGxsbGzsx6y/p/8qXDa4AzsAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -280,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/Android-学习/">Android 学习</a>
     </ul>
     
 
@@ -294,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/404.html" class="leancloud-views_num" data-flag-title="">
+                <span id="/2019/03/24/ViewDragHelper学习及使用/" class="leancloud-views_num" data-flag-title="ViewDragHelper学习及使用">
      &nbsp;浏览量
 </span>
 
@@ -306,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://zhaoxueli.win//404.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ViewDragHelper学习及使用&url=http://zhaoxueli.win//2019/03/24/ViewDragHelper学习及使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -327,7 +364,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/404.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=ViewDragHelper学习及使用&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2019/03/24/ViewDragHelper学习及使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -343,7 +380,57 @@
                 
 
                 <!-- Post Content -->
-                [object Promise]
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>工作中需要开发一个类似于抽屉式的滑动的 View，同过调研及查找资料发现<code>ViewDragHelper</code>可以实现此类方式，在此记录下<code>ViewDragHelper</code>的学习及使用。</p>
+<p>首先 <code>ViewDragHelper</code> 分为三部：</p>
+<ol>
+<li>创建 <code>ViewDragHelper</code> 实例，通过<br><code>ViewDragHelper.create(ViewGroup forParent, float sensitivity, Callback cb)</code><br>创建<code>ViewDragHelper</code>实例，其中：<br><code>ViewGroup</code>：当前的<code>ViewGroup</code><br><code>sensitivity</code>:设置滑动灵敏度，通常为 1<br><code>cb</code>:拖拽回调，用来处理拖动位置相关回调</li>
+<li>实现 <code>ViewDragHelper.Callback()</code> 相关方法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mViewDragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelper.Callback() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean tryCaptureView(@NonNull View child, int pointerId) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            @Override</div><div class="line">            public int clampViewPositionVertical(@NonNull View child, int top, int dy) &#123;</div><div class="line">                return super.clampViewPositionVertical(child, top, dy);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            @Override</div><div class="line">            public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) &#123;</div><div class="line">                return super.clampViewPositionHorizontal(child, left, dx);</div><div class="line">            &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>该回调可以移动相关的处理，比如哪些 view 可以移动，以及移动的边界处理等。其中参数如下：</p>
+<ul>
+<li><code>tryCaptureView</code>: 返回 <code>true</code> 表示捕获相关 View，根据传入的 child 确定要捕获的 view</li>
+<li><code>clampViewPositionVertical(View child, int top, int dy)</code>、<code>clampViewPositionHorizontal(View child, int left, int dx)</code>:  child 移动边界控制，其中 top,left 表示移动到的位置。</li>
+</ul>
+<ol>
+<li>处理 <code>ViewGroup</code> 的触摸事件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</div><div class="line">        return mViewDragHelper.shouldInterceptTouchEvent(ev);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        mViewDragHelper.processTouchEvent(event);</div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>onInterceptTouchEvent</code>:交给  <code>mViewDragHelper.shouldInterceptTouchEvent(ev)</code> 进行处理</p>
+<p><code>onTouchEvent</code>：交给 <code>mViewDragHelper.processTouchEvent(event)</code> 进行处理</p>
+<p>简单的使用就如上所示，当如，其中如果进行复杂的处理，还需更多的用法，比如：</p>
+<ul>
+<li>边界触摸检测</li>
+<li>拖拽释放回调</li>
+<li>移动到某个指定位置</li>
+</ul>
+<p>比如如下重写的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">mViewDragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelper.Callback() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean tryCaptureView(@NonNull View child, int pointerId) &#123;</div><div class="line">                return child == mDragView;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            @Override</div><div class="line">            public int clampViewPositionVertical(@NonNull View child, int top, int dy) &#123;</div><div class="line">                if (top &gt; getHeight() - mDragViewHight) &#123;</div><div class="line">                    top = getHeight() - mDragViewHight;</div><div class="line">                &#125; else if (top &lt; MIN_TOP) &#123;</div><div class="line">                    top = MIN_TOP;</div><div class="line">                &#125;</div><div class="line">                return top;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public int getViewVerticalDragRange(@NonNull View child) &#123;</div><div class="line">                return getMeasuredHeight() - child.getMeasuredHeight();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) &#123;</div><div class="line">                super.onViewPositionChanged(changedView, left, top, dx, dy);</div><div class="line"></div><div class="line">                LinearLayout.LayoutParams bottomViewLayoutPara = (LayoutParams) mBottomView.getLayoutParams();</div><div class="line">                bottomViewLayoutPara.height = bottomViewLayoutPara.height + dy * -1;</div><div class="line">                mBottomView.setLayoutParams(bottomViewLayoutPara);</div><div class="line"></div><div class="line">                LinearLayout.LayoutParams topViewLayoutPara = (LayoutParams) mTopView.getLayoutParams();</div><div class="line">                topViewLayoutPara.height = topViewLayoutPara.height + dy;</div><div class="line">                mTopView.setLayoutParams(topViewLayoutPara);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>getViewVerticalDragRange</code> 返回child 垂直移动范围的距离，如果不加，当有点击事件之后则不触发</li>
+<li><code>onViewPositionChanged</code> 当位置改变进行回调</li>
+</ul>
+<p>同时除了以上方法之外还有其余如下方法：</p>
+<ul>
+<li><code>onViewDragStateChanged</code>:ViewDragHelper状态改变时进行回调（IDLE,DRAGGING,SETTING）</li>
+<li><code>onEdgeTouched</code>:触摸到边界是回调</li>
+<li><code>onEdgeDragStarted</code>:边界拖动时回调，需设置 <code>setEdgeTrackingEnabled()</code>  ,可以设置如下<ul>
+<li>EDGE_LEFT：左边界</li>
+<li>EDGE_TOP：上边界</li>
+<li>EDGE_RIGHT：右边界</li>
+<li>EDGE_BOTTOM：底部边界<br>附实现效果：<br><img src="http://ww1.sinaimg.cn/large/005FndVTly1g1e8e96s9wg3140280hdx.gif" alt="效果图"><br>附代码（DragView）：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">public class DragView extends LinearLayout &#123;</div><div class="line"></div><div class="line">    private View mTopView;</div><div class="line">    private View mDragView;</div><div class="line">    private View mBottomView;</div><div class="line"></div><div class="line">    private ViewDragHelper mViewDragHelper;</div><div class="line"></div><div class="line">    private int mDragViewHight;</div><div class="line"></div><div class="line">    final int MIN_TOP = 100;</div><div class="line"></div><div class="line"></div><div class="line">    public DragView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public DragView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public DragView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">        super(context, attrs, defStyleAttr);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        mViewDragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelper.Callback() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean tryCaptureView(@NonNull View child, int pointerId) &#123;</div><div class="line">                return child == mDragView;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            @Override</div><div class="line">            public int clampViewPositionVertical(@NonNull View child, int top, int dy) &#123;</div><div class="line">                if (top &gt; getHeight() - mDragViewHight) &#123;</div><div class="line">                    top = getHeight() - mDragViewHight;</div><div class="line">                &#125; else if (top &lt; MIN_TOP) &#123;</div><div class="line">                    top = MIN_TOP;</div><div class="line">                &#125;</div><div class="line">                return top;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public int getViewVerticalDragRange(@NonNull View child) &#123;</div><div class="line">                return getMeasuredHeight() - child.getMeasuredHeight();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) &#123;</div><div class="line">                super.onViewPositionChanged(changedView, left, top, dx, dy);</div><div class="line"></div><div class="line">                LinearLayout.LayoutParams bottomViewLayoutPara = (LayoutParams) mBottomView.getLayoutParams();</div><div class="line">                bottomViewLayoutPara.height = bottomViewLayoutPara.height + dy * -1;</div><div class="line">                mBottomView.setLayoutParams(bottomViewLayoutPara);</div><div class="line"></div><div class="line">                LinearLayout.LayoutParams topViewLayoutPara = (LayoutParams) mTopView.getLayoutParams();</div><div class="line">                topViewLayoutPara.height = topViewLayoutPara.height + dy;</div><div class="line">                mTopView.setLayoutParams(topViewLayoutPara);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</div><div class="line">        return mViewDragHelper.shouldInterceptTouchEvent(ev);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        mViewDragHelper.processTouchEvent(event);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onFinishInflate() &#123;</div><div class="line">        super.onFinishInflate();</div><div class="line">        mTopView = getChildAt(0);</div><div class="line">        mDragView = getChildAt(1);</div><div class="line">        mBottomView = getChildAt(2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</div><div class="line">        super.onSizeChanged(w, h, oldw, oldh);</div><div class="line">        mDragViewHight = mDragView.getMeasuredHeight();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+    
+
+    
+</div>
+
 
                 
 
@@ -366,9 +453,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="404.html"
-        data-url="http://zhaoxueli.win/404.html"
-        data-title="">
+        data-thread-key="2019/03/24/ViewDragHelper学习及使用/"
+        data-url="http://zhaoxueli.win/2019/03/24/ViewDragHelper学习及使用/"
+        data-title="ViewDragHelper学习及使用">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -390,6 +477,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2018/11/13/每日算法（反转数组）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -571,6 +666,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
