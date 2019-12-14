@@ -10,7 +10,7 @@
     
     <title>
         
-            每日算法（两数之和、两数相加）-11.12 | 
+            Kotlin 默认参数注意事项 | 
         
         Panda&#39;s Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="Andori开发工程师.">
-    <meta name="keywords" content="Android开发工程师，IT男,学习,算法">
+    <meta name="keywords" content="Android开发工程师，IT男,Android 学习,Kotlin">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://zhaoxueli.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="每日算法（两数之和、两数相加）-11.12 | Panda&#39;s Blog">
+    <meta property="og:title" content="Kotlin 默认参数注意事项 | Panda&#39;s Blog">
     <meta property="og:description" content="Andori开发工程师.">
-    <meta property="og:article:tag" content="学习"> <meta property="og:article:tag" content="算法"> 
+    <meta property="og:article:tag" content="Android 学习"> <meta property="og:article:tag" content="Kotlin"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -229,7 +229,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#两数之和"><span class="post-toc-number">1.</span> <span class="post-toc-text">两数之和</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#两数相加"><span class="post-toc-number">2.</span> <span class="post-toc-text">两数相加</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin-中实现方法的重载"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin 中实现方法的重载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存在的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">存在的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -265,7 +265,7 @@
         
     
             <p class="article-headline-p">
-                每日算法（两数之和、两数相加）-11.12
+                Kotlin 默认参数注意事项
             </p>
         </div>
 
@@ -284,7 +284,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Xueli</strong>
-        <span>11月 12, 2018</span>
+        <span>12月 04, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -305,7 +305,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADjklEQVR42u3ay26cUBAEUP//TydbS1aYqm4uIcphZdkzhntYlPrx9cv17fpCgAMHDhw4cODAgQPHizm+4uv753/+PPvrnz5zfcef35qdBQcOHDhwnOP4EEWXB7v+/PVhrtGTw9xwFhw4cODAcYwjCdfrYLv3MwnB/iw4cODAgePvcgxvWf63tvDDgQMHDhz/OkfS1LsrGvO74MCBAweOt3G0zb59ELZhnJSUj/ZKceDAgQPHsYWG9/z8iv0OHDhw4PiPOdrrunjLB0h5K3AW6sWJcODAgQPHrRz7Rls+dspX4lqgIlZnFS0OHDhw4Ig59ofPH/16gJQzzZbncODAgQPHMxztYyXxvFmhG4blaPSFAwcOHDjOcbQRlTcB2zhMOGavrZjC4cCBAweONUdbbrWUeRG44WvLORw4cODAcYKjfdB8dNQu2+1HWcOCEAcOHDhw3MoxawsmzbvZ72chvWpo4sCBAweOAxz5aKdt1bWhOFtZaEdiOHDgwIHjHMemrGr/un8NsyWJYXMQBw4cOHCMOPaHz0c+mwW4NmLzZQscOHDgwHGCIy/P8mbc6hEXZd5tq3I4cODAgWPEMWsFzqK0jcm8wde+PBw4cODAcY6jvcFdpd1sreH6XrOXigMHDhw4nuHYtN5Or9zNnmEVtDhw4MCBoyzh2pIsX3rLy7N8taKN/A8BjwMHDhw4buXIR0152y4v5zYtxfyFrfY7cODAgQPHgqMtt9r4bJfhZuVcvZyBAwcOHDgOc7SB2n63bT7OluRWCw04cODAgeMmjtOrBvl/zjnysMeBAwcOHE9yJGHWlnb5gkLb1Gvv+CGGceDAgQPHAY52VLMP4NnaRI5VNChx4MCBA8cBjnaAVC8NxMSzI80alDhw4MCB4wRHXmIlrb19W3BWWM7WIHDgwIEDx2mO5NqsxLWLDsPVt00JhwMHDhw4jnXD9uOlpLjKW377EVQUtDhw4MCBY80xC9pkfW2zuLB5GXXjEgcOHDhw3MrRtvby8JuNndqRUh7hOHDgwIHjSY62IbgJxf1yW9sKLMZOOHDgwIHjVo62PDs3EMobfC16EbQ4cODAgeMRjk305qsPyYGT6I3iHAcOHDhwvIxjg5WXZLMIj76LAwcOHDiOccyag3nItUVavsaXD7Rw4MCBA8czHJsWWx5ybUi39x0Ot3DgwIEDx60cLhw4cODAgQMHDhw4cLzs+g0oSBXevVv2ygAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACz0lEQVR42u3a0U7DMAwF0P3/T8MrEqK71ymoJCdP1dZtPqmEsZ3Xx5HrhY2NjY2NjY2Njf1I9iteX+//fn397vfr62/+6TtnMWNjY2OfwH7zp/+Sl3w24V2TbogZGxsb+wB2m1quw71+/frXf3plJWZsbGxs7PaeJKkkSWs9HmxsbGzsPIgkpbVFCzY2Njb2vU2lJLh8bLCS8P60l4aNjY39ePb6oPfvrx8x38bGxsZ+ALtdedMnST/t9VLk2NjY2Juy8+BW1spgOI/khgoMGxsb+9+yVwJNklY7AGgHDNG4AhsbG3tr9qyJcxcvGULMXsfGxsY+gf3m3/dyKJsfpslLiPURLzY2NvaZ7NmhnJXXZ+2toljCxsbG3pQ9O6Cz0vq5a0PzIgQbGxv7HHZSfuRJLilpVra7Hv1iY2NjH8OelQEtrz2akzwkbGxs7DPZ68dx8sSTj3I/yhU9EmxsbOxN2XkJ0SahpJG0sil18wsbGxt7U/YM3waavzsrQqL2EzY2NvbW7CTQWRsoaTbl98xKIGxsbOwT2O2BmHYLZuyVAzrY2NjY57DXk1BSluRbsz5axsbGxsZuD8206ad9N4+wPqmEjY2NvR17ZZiab9BsbDAbKmBjY2Ofw54dxFlJddefmrWZikEvNjY29tbspFSYtX7aUqSNBxsbG/tM9qytk6e0vOC594AONjY29pnsJJ20raJ2iBsdoww+9WY8gI2Njb0Re3aYJg99NsRtN7ROYNjY2NgbsdvVHs2cHdAsxrf5xmFjY2Nvym4HvTk4adyv84rHgI2Njb01u20w/UYx05Y39cZhY2NjH8BuW/Yrbf02Wc6SKzY2NjZ23jBqm1Bt+smHzXUpgo2NjX08O//5u0a5+SAZGxsb+zT2rKmU3NmOgfMHUxwPwsbGxt6a3TZ68pFA2666d1SAjY2NfQL7nIWNjY2NjY2NjY39mPUJWjtTJQluQcAAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -317,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/学习/">学习</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/算法/">算法</a>
+        <a class="post_tag-link" href="/tags/Android-学习/">Android 学习</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Kotlin/">Kotlin</a>
     </ul>
     
 
@@ -331,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2018/11/12/每日算法（两数之和、两数相加）/" class="leancloud-views_num" data-flag-title="每日算法（两数之和、两数相加）-11.12">
+                <span id="/2019/12/04/Kotlin 默认参数注意事项/" class="leancloud-views_num" data-flag-title="Kotlin 默认参数注意事项">
      &nbsp;浏览量
 </span>
 
@@ -343,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=每日算法（两数之和、两数相加）-11.12&url=http://zhaoxueli.win//2018/11/12/每日算法（两数之和、两数相加）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin 默认参数注意事项&url=http://zhaoxueli.win//2019/12/04/Kotlin 默认参数注意事项/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -364,7 +364,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=每日算法（两数之和、两数相加）-11.12&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2018/11/12/每日算法（两数之和、两数相加）/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=Kotlin 默认参数注意事项&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2019/12/04/Kotlin 默认参数注意事项/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -382,22 +382,54 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>今天开始记录每天学习一道两道的算法题，由简入难。<br>今天一共学习了两道算法，一道简单一道中等，分别为两数之和、两数相加，下面开始记录题以及自己的分析。</p>
-<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><blockquote>
-<p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">给定 nums = [2, 7, 11, 15], target = 9 </div><div class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</div><div class="line">所以返回 [0, 1]</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>分析：刚拿到题发现并不是很难，于是很快写出如下算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public int[] sumInArray(int[] nums, int target) &#123;</div><div class="line">		for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">			int val = target - nums[i];</div><div class="line">			for (int j = i; j &lt; nums.length; j++) &#123;</div><div class="line">				if (nums[j] == val) &#123;</div><div class="line">					return new int[] &#123; i, j &#125;;</div><div class="line">				&#125; else &#123;</div><div class="line">					continue;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return null;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>但是该方法的时间复杂度为$O(n^2)$；通过查看解析，发现使用哈希表进行处理，通过以空间换取速度的方式，可以将查找时间从 $O(n)$ 降低到 $O(1)$，但是如果出现冲突，查找时间还是可能会退化到 $O(n)$。<br>方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public static int[] sumInArray(int[] nums, int target) &#123;</div><div class="line">        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            int val = target - nums[i];</div><div class="line">            if (map.containsKey(val)) &#123;</div><div class="line">                return new int[]&#123;map.get(val), i&#125;;</div><div class="line">            &#125;</div><div class="line">            map.put(nums[i], i);</div><div class="line">        &#125;</div><div class="line">        return null;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>该方法遍历了一次，因此时间复杂度为$O(n)$，但是作为代价就是空间复杂度为$O(n)$。</p>
-<h2 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h2><blockquote>
-<p>给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。<br>除了数字 0 之外，这两个数字都不会以零开头。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</div><div class="line">输出：7 -&gt; 0 -&gt; 8</div><div class="line">原因：342 + 465 = 807</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>分析：首先拿到题目很困惑，因为很长时间没有做链表之类的题目，首先自己想到的是如果其中一个链表开头为0，则直接返回另一个链表，然后在循环进行遍历逐位相加，但是手写代码发现写不出来😓，因此去查看官方解析：</p>
+        <h2 id="Kotlin-中实现方法的重载"><a href="#Kotlin-中实现方法的重载" class="headerlink" title="Kotlin 中实现方法的重载"></a>Kotlin 中实现方法的重载</h2><p>Kotlin 方法或构造函数中的参数可以给出默认值，来达到 Java 方法中的重载功能，如下</p>
+<ul>
+<li>Java 代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class FunTestJava &#123;</div><div class="line">    </div><div class="line">    public static void hello() &#123;</div><div class="line">        System.out.println(&quot;Hello, world!&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void hello(String name) &#123;</div><div class="line">        System.out.println(&quot;Hello, &quot; + name + &quot;!&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void hello(String name, int age) &#123;</div><div class="line">        if (age &gt; 0) &#123;</div><div class="line">            System.out.println(&quot;Hello, &quot; + name + &quot;(&quot; + age + &quot;)!&quot;);</div><div class="line">        &#125; else &#123;</div><div class="line">            System.out.println(&quot;Hello, &quot; + name + &quot;!&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Kotlin 代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">object FunTest &#123;</div><div class="line"></div><div class="line">    fun sayHello(name: String = &quot;world&quot;, age: Int = 0) &#123;</div><div class="line">        if (age &gt; 0) &#123;</div><div class="line">            println(&quot;Hello, $&#123;name&#125;($&#123;age&#125;)!&quot;)</div><div class="line">        &#125; else &#123;</div><div class="line">            println(&quot;Hello, $&#123;name&#125;!&quot;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 Kotlin 类代码中调用，可以实现重载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FunTest.sayHello()</div><div class="line">FunTest.sayHello(&quot;Kotlin&quot;)</div><div class="line">FunTest.sayHello(&quot;Kotlin&quot;, 16)</div></pre></td></tr></table></figure>
+<p>但是在 Java 类中无法按 Kotlin 这种方式调用，必须全量声明参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FunTest.INSTANCE.sayHello(&quot;Kotlin&quot;,18);</div></pre></td></tr></table></figure>
+<p>原因分析，将编译后的代码转为 java 代码查看发现，上述方法被转为如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public final void sayHello(@NotNull String name, int age) &#123;</div><div class="line">      Intrinsics.checkParameterIsNotNull(name, &quot;name&quot;);</div><div class="line">      String var3;</div><div class="line">      if (age &gt; 0) &#123;</div><div class="line">         var3 = &quot;Hello, &quot; + name + &apos;(&apos; + age + &quot;)!&quot;;</div><div class="line">         System.out.println(var3);</div><div class="line">      &#125; else &#123;</div><div class="line">         var3 = &quot;Hello, &quot; + name + &apos;!&apos;;</div><div class="line">         System.out.println(var3);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   // $FF: synthetic method</div><div class="line">   public static void sayHello$default(FunTest var0, String var1, int var2, int var3, Object var4) &#123;</div><div class="line">      if ((var3 &amp; 1) != 0) &#123;</div><div class="line">         var1 = &quot;world&quot;;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      if ((var3 &amp; 2) != 0) &#123;</div><div class="line">         var2 = 0;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      var0.sayHello(var1, var2);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">FunTest.sayHello$default(FunTest.INSTANCE, (String)null, 0, 3, (Object)null);</div><div class="line">FunTest.sayHello$default(FunTest.INSTANCE, &quot;Kotlin&quot;, 0, 2, (Object)null);</div><div class="line">FunTest.INSTANCE.sayHello(&quot;学而思&quot;, 10);</div></pre></td></tr></table></figure>
+<p>可以发现，转换后会生成一个正常的 <strong>sayHello</strong> 方法以及 <strong>sayHello$default</strong> 方法，当 Kotlin 调用默认参数时实际上是调用的 <strong>sayHello$default</strong> 方法，其和 Java 中重载方法并不一样，因此 Java 中不能使用。</p>
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><p>当自定义 View 时，用 Java 编写如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class TestViewJava extends AppCompatTextView &#123;</div><div class="line">    public TestViewJava(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TestViewJava(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TestViewJava(Context context, AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">        super(context, attrs, defStyleAttr);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般声明三种构造函数，用 Kotlin 编写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class TestViewKotlin(</div><div class="line">    context: Context,</div><div class="line">    attrs: AttributeSet? = null,</div><div class="line">    defStyleAttr: Int = 0</div><div class="line">) : AppCompatTextView(context, attrs, defStyleAttr) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据默认参数问题可以知道，不需要为不同参数编写另一个构造方法。</p>
+<p>这个自定义的 View，使用在 XML 布局中时，编译不会出错，但是运行时，会报 NoSuchMethodException 错误，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;android.support.constraint.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    tools:context=&quot;.MainActivity&quot;&gt;</div><div class="line"></div><div class="line">    &lt;com.li.panda.busquery.TestViewKotlin</div><div class="line">        android:id=&quot;@+id/tvKTTest&quot;</div><div class="line">        android:layout_width=&quot;0dp&quot;</div><div class="line">        android:layout_height=&quot;0dp&quot;</div><div class="line">        android:background=&quot;@color/colorPrimary&quot;</div><div class="line">        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</div><div class="line">        app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</div><div class="line">        app:layout_constraintRight_toRightOf=&quot;parent&quot;</div><div class="line">        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/android.support.constraint.ConstraintLayout&gt;</div></pre></td></tr></table></figure>
+<p>报错如下：</p>
 <blockquote>
-<p>类似于纸上计算两个数字的和，首先从最低有效位也就是列表L1 和 L2 的表头开始相加。由于每位数字都应当处于 0…9 的范围内，因此两个数字的和时可能会出现“溢出”。例如，5 + 7 = 12。在这种情况下，将当前位的数值设置为 22，并将进位 carry=1 带入下一次迭代。进位 carry 必定是 0 或 1，这是因为两个数字相加（考虑到进位）可能出现的最大和为 9 + 9 + 1 = 19。</p>
+<p>Caused by: android.view.InflateException: Binary XML file line #9: Binary XML file line #9: Error inflating class com.li.panda.busquery.TestViewKotlin<br>Caused by: android.view.InflateException: Binary XML file line #9: Error inflating class com.li.panda.busquery.TestViewKotlin<br>Caused by: java.lang.NoSuchMethodException: <init> [class android.content.Context, interface android.util.AttributeSet] </init></p>
 </blockquote>
-<p>参考代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</div><div class="line">        ListNode head = new ListNode(0);</div><div class="line">        ListNode p = l1;</div><div class="line">        ListNode q = l2;</div><div class="line">        ListNode currentNode = head;</div><div class="line">        int carry = 0;</div><div class="line">        while (p != null || q != null) &#123;</div><div class="line">            int x = (p != null) ? p.val : 0;</div><div class="line">            int y = (q != null) ? q.val : 0;</div><div class="line">            int sum = carry + x + y;</div><div class="line">            carry = sum / 10;</div><div class="line">            currentNode.next = new ListNode(sum % 10);</div><div class="line">            currentNode = currentNode.next;</div><div class="line">            if (p != null) p = p.next;</div><div class="line">            if (q != null) q = q.next;</div><div class="line">        &#125;</div><div class="line">        if (carry &gt; 0) &#123;</div><div class="line">            currentNode.next = new ListNode(carry);</div><div class="line">        &#125;</div><div class="line">        return head.next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">public class ListNode &#123;</div><div class="line">        int val;</div><div class="line">        ListNode next;</div><div class="line"></div><div class="line">        ListNode(int value) &#123;</div><div class="line">            val = value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>今天学习了两个算法，再次记录自己的学习状态，以敦促自己继续去学习</p>
+<p>原因就是上面分析的原理，Kotlin 并不会存在多个相同名称的方法进行重载，用这样写生成的构造方法属于 <strong>合成方法</strong> 当 inflate 布局时找不到方法，将字节码转为 Java 代码后查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public TestViewKotlin(@NotNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">      Intrinsics.checkParameterIsNotNull(context, &quot;context&quot;);</div><div class="line">      super(context, attrs, defStyleAttr);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   // $FF: synthetic method</div><div class="line">   public TestViewKotlin(Context var1, AttributeSet var2, int var3, int var4, DefaultConstructorMarker var5) &#123;</div><div class="line">      if ((var4 &amp; 2) != 0) &#123;</div><div class="line">         var2 = (AttributeSet)null;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      if ((var4 &amp; 4) != 0) &#123;</div><div class="line">         var3 = 0;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      this(var1, var2, var3);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>使用 @JvmOverloads 注解方式在构造函数前声明，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class TestViewKotlin @JvmOverloads constructor(</div><div class="line">    context: Context,</div><div class="line">    attrs: AttributeSet? = null,</div><div class="line">    defStyleAttr: Int = 0</div><div class="line">) : AppCompatTextView(context, attrs, defStyleAttr) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后运行，不会报错，将字节码转为 Java 代码后发现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@JvmOverloads</div><div class="line">   public TestViewKotlin(@NotNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">      Intrinsics.checkParameterIsNotNull(context, &quot;context&quot;);</div><div class="line">      super(context, attrs, defStyleAttr);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   // $FF: synthetic method</div><div class="line">   @JvmOverloads</div><div class="line">   public TestViewKotlin(Context var1, AttributeSet var2, int var3, int var4, DefaultConstructorMarker var5) &#123;</div><div class="line">      if ((var4 &amp; 2) != 0) &#123;</div><div class="line">         var2 = (AttributeSet)null;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      if ((var4 &amp; 4) != 0) &#123;</div><div class="line">         var3 = 0;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      this(var1, var2, var3);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JvmOverloads</div><div class="line">   public TestViewKotlin(@NotNull Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">      this(context, attrs, 0, 4, (DefaultConstructorMarker)null);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JvmOverloads</div><div class="line">   public TestViewKotlin(@NotNull Context context) &#123;</div><div class="line">      this(context, (AttributeSet)null, 0, 6, (DefaultConstructorMarker)null);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>发现确实保存了构造方法的重载，但是当使用 @JvmOverloads 关键字时，需要注意参数初始化的默认设置。</p>
+<ul>
+<li>@JvmOverloads 默认值处理规则：</li>
+</ul>
+<ol>
+<li>对象，默认值为 null。</li>
+<li>基础数据类型，默认值为基本数据类型的默认值。例如 Int 就是 0，Boolean 就是 false。</li>
+</ol>
+<p>比如上述自定义 View，构造方法参数 defStyleAttr 默认会为 0 ，但是在正常情况下自定义 View<br>时候会传入默认 defStyleAttr 值，其值不为 0，因此在用这种方式编写自定义 Veiw 时注意，以免引起一些问题。</p>
+<p>因此，<strong>自定义 View 推荐重写多个构造函数</strong>，而不是使用默认参数来实现。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>Kotlin 可以通过对一个方法的参数指定默认值的方式，来完成类似 Java 中「方法重载」的效果。</li>
+<li>若想与 Java 的重载方法保持一致，可以使用 @JvmOverloads 注解，会自动生成该方法的全部重载方法。</li>
+<li>在自定义 View 时，需要注意指定参数 defStyleAttr 的默认值，而不应该是 0。（不推荐这种方法自定义 View）</li>
+</ol>
 
     
 
@@ -426,9 +458,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2018/11/12/每日算法（两数之和、两数相加）/"
-        data-url="http://zhaoxueli.win/2018/11/12/每日算法（两数之和、两数相加）/"
-        data-title="每日算法（两数之和、两数相加）-11.12">
+        data-thread-key="2019/12/04/Kotlin 默认参数注意事项/"
+        data-url="http://zhaoxueli.win/2019/12/04/Kotlin 默认参数注意事项/"
+        data-title="Kotlin 默认参数注意事项">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -445,7 +477,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/11/13/每日算法（反转数组）/" id="post_nav-newer" class="prev-content">
+        <a href="/2019/12/14/Android 的消息机制/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -459,7 +491,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/09/14/Android面试总结/" id="post_nav-older" class="next-content">
+        <a href="/2019/12/01/Kotlin 直接使用 View ID 的问题/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
