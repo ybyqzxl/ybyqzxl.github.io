@@ -10,6 +10,8 @@
     
     <title>
         
+            HTTP的原理及工作机制 | 
+        
         Panda&#39;s Blog
     </title>
 
@@ -25,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Xueli">
     <meta name="description" content="Andori开发工程师.">
-    <meta name="keywords" content="Android开发工程师，IT男">
+    <meta name="keywords" content="Android开发工程师，IT男,HTTP">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -46,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://zhaoxueli.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Panda&#39;s Blog">
+    <meta property="og:title" content="HTTP的原理及工作机制 | Panda&#39;s Blog">
     <meta property="og:description" content="Andori开发工程师.">
-    
+    <meta property="og:article:tag" content="HTTP"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -203,6 +205,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP-定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTTP 定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工作方式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">工作方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#URL-gt-HTTP-报文"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">URL -> HTTP 报文</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关键内容"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关键内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RESTful-HTTP-按规范使用-HTTP"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">RESTful HTTP: 按规范使用 HTTP</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -228,7 +265,7 @@
         
     
             <p class="article-headline-p">
-                
+                HTTP的原理及工作机制
             </p>
         </div>
 
@@ -247,7 +284,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Xueli</strong>
-        <span>3月 17, 2017</span>
+        <span>12月 17, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -268,7 +305,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB9klEQVR42u3aQW7EIAwF0Nz/0u22UhXmG4gywMuqGs0QPxausbl+tnguDAwMDAwMDIyvYVzxc/f9v5/frfz/85EYMDAwzmR8SG1NRgJoY6oxYGBgnMzIk2k73DtegiwkdAwMDIzma9rFX7vsy9fEwMDAGFoiCCg5pmJgYGA8cYiNWvYx5rWzOAYGxoKM6mDgib9fmG9gYGAswihfcSiWdH1jgMfvjGBgYCzFaLfPkisX1W9GZV+wAgYGxmmMaursGwmMrImBgYGRN+urVy6qyb29MgYGBkZf+qv+tq+UnPx/AwMDYylGnlLzUJJtSrbmw0ZgYGAcwxi5ClZ9cbJyvsUYGBjnMPIGWT6GHGnDTbhsgYGBsR1jpHQbSdnVArSz3YaBgbEdo3rxNA+xnWqrjTYMDIzTGHnQyQghT6lR6z8fYWJgYGzN6Gui5c21nFTeFAwMjGMYcweZfSOHzkMvBgbGYYxq2Zek4DylTku4GBgYWzOqJV3SMus77k6YxGJgYGzHqCa+PPQ8rGT98nwDAwNjO8Z4a6w6DKgeZaOEi4GBcQDjiSNrskI1KWNgYGDkV8RGxgAJvrM0xMDAwIhfVt2OcsrGwMA4kpGkxbzUSw6xeTtvcrsNAwNjQcaswUDfIXZaaYiBgbEpY90HAwMDAwMDA+PV5xeQjl6T0xgnhAAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACwElEQVR42u3aQXIbMQwEQP3/08kDUrJmAClRyN6Ty9LusnnwGAAfv668HtjY2NjY2NjY2NhfyX7EV/79py/+4znJp8++2a4EGxsb+2z2iz/9T9j5cqNlBbzZmrGxsbHvYbevyaMrWlYch7M1Y2NjY2PnW5DzNqUINjY2NvbqER8rP5J7sbGxsbE3TaX8N7N723j7S700bGxs7K9nt4Peb/j5H8y3sbGxsb+S3V55UO3Lmza0XqwcGxsb+1B28rKff78fEicbvdkybGxs7HvYyYJafAtrA69ob2FjY2MfzW5HuQkpb/q3ras2LLGxsbFvYM+KhLyhvxktt1uMjY2NfRs7b+IkIZTj94GXlzHY2NjYZ7PzNlAL3g+JE1gxkMDGxsY+mj2Lh7xVtBkbtKt9ei82Njb20ez2WEzSVMq3YBOTRdxiY2NjH8reLG4TXbMCox0YY2NjY9/A3vxzPywJ4oJnv5XY2NjY2J8oIWZbmccVNjY29m3sfOibU2dN/3eNmYsKDBsbG/s4dsvLtyYPm7xE+bnsKQIMGxsb+z9ntyH0XuSMl4CxsbGx72HPipD29ckT8rInbzlhY2Nj38D+9Fi3Db8k6pK7sLGxse9hzzCbhn4be21DChsbG/tmdhtdeRkzO6yTjI2LthQ2Njb2xexk6XkIzca3s3EvNjY29g3sdzX0k/IgKVfyNlO7cmxsbOxT2bMGUztqTdh5C2lYrmBjY2Nfw561bzaD29kRnHxDsbGxsc9mt02fJDDyozZ5CLUNrKgCw8bGxj6I/a5XtmPjfMs+EmDY2NjYx7Hz0GojrR0qtMPj6GnY2NjY2HHp0o5pk5hMBskvno+NjY2NXTb083bSezclGvRiY2NjH8pu2/3tQZz9wKA93ImNjY19D3s/6G3bPbNPZ2vGxsbGPpt9z4WNjY2NjY2NjY39NddvMnkLbYzTf3oAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -280,7 +317,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/HTTP/">HTTP</a>
     </ul>
     
 
@@ -294,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/404.html" class="leancloud-views_num" data-flag-title="">
+                <span id="/2019/12/17/HTTP的原理及工作机制/" class="leancloud-views_num" data-flag-title="HTTP的原理及工作机制">
      &nbsp;浏览量
 </span>
 
@@ -306,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://zhaoxueli.win//404.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HTTP的原理及工作机制&url=http://zhaoxueli.win//2019/12/17/HTTP的原理及工作机制/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -327,7 +364,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/404.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Panda&#39;s Blog&title=HTTP的原理及工作机制&summary=Andori开发工程师.&pics=http://zhaoxueli.win/img/china.png&url=http://zhaoxueli.win/2019/12/17/HTTP的原理及工作机制/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -343,7 +380,86 @@
                 
 
                 <!-- Post Content -->
-                [object Promise]
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="HTTP-定义"><a href="#HTTP-定义" class="headerlink" title="HTTP 定义"></a>HTTP 定义</h2><p>最直观的印象：</p>
+<ol>
+<li>浏览器输入地址，打开网页</li>
+<li>Android 发送网络请求，返回对应内容</li>
+</ol>
+<p>实质：用于传输超文本的协议：超文本传输协议（HyperText Transfer Protocol）。</p>
+<h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><p>客户端发送请求，服务器收到请求后将响应发送给客户端。</p>
+<h4 id="URL-gt-HTTP-报文"><a href="#URL-gt-HTTP-报文" class="headerlink" title="URL -&gt; HTTP 报文"></a>URL -&gt; HTTP 报文</h4><ul>
+<li>示例：<a href="http://zhaoxueli.win/text?name=panda">http://zhaoxueli.win/text?name=panda</a></li>
+</ul>
+<p>http: 协议类型<br>zhaoxueli.win：服务器地址<br>text?name=panda：路径 path</p>
+<p>对应报文格式-Request 示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /text?name=panda HTTP/1.1   //表示请求行对应：请求方式（method） 路径（path）  HTTP版本（HTTP version）</div><div class="line">Host:zhaoxueli.win   //服务器地址</div><div class="line">Content-Type:text/plain</div><div class="line">Content-Length:243</div></pre></td></tr></table></figure>
+<p>Response 报文示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK //表示状态行：HTTP版本（HTTP version） 状态码（status code） 状态信息（status message）</div><div class="line">content-type: application/json;charset=utf-8</div><div class="line">cache-control: public, max-age=60, s-maxage=60</div><div class="line">vary: Accept,Accept-Encoding</div><div class="line">etag: W/&quot;0233445533ddfasfaf&quot;</div><div class="line">content-encoding: gzip</div><div class="line"></div><div class="line">[&#123;&quot;user&quot;:&quot;aaaa&quot;&#125;]   //body</div></pre></td></tr></table></figure>
+<h3 id="关键内容"><a href="#关键内容" class="headerlink" title="关键内容"></a>关键内容</h3><ul>
+<li>Request Methods 请求方法<ol>
+<li>GET:获取资源，无 Body–执行多次与执行一次相同（幂等性）</li>
+<li>POST:增加或修改资源，有 Body </li>
+<li>PUT:只修改资源：有 Body–执行多次与执行一次相同（幂等性）</li>
+<li>DELETE:删除资源：无 Body–执行多次与执行一次相同（幂等性）</li>
+<li>HEAD:同 GET 方法，区别是使用 HEAD 方法时不返回 Body，一般用于下载，请求头信息。</li>
+</ol>
+</li>
+<li>Response Status Code:响应状态码，对响应结果做出类型化描述（比如：请求成功）<ol>
+<li>1XX: 临时性消息（101：支持Http2，100：）兼容消息</li>
+<li>2XX: 成功</li>
+<li>3XX: 重定向（301：永久迁移，302：暂时迁移，304：内容无改变）</li>
+<li>4XX: 客户端错误（浏览器）</li>
+<li>5XX: 服务器内部错误</li>
+</ol>
+</li>
+<li>Header ：HTTP 消息的元数据（metadata）[数据的属性]，常见如下：<ol>
+<li>Host：服务器主机地址（不是用来寻址，寻找路径）</li>
+<li>Content-Type/Content-Length: Body 的类型和长度<ol>
+<li>Content-Length: 内容的长度（字节）</li>
+<li>Content-Type: 内容的类型<ol>
+<li>text/html: 表示 html</li>
+<li>application/json: 表示 Json 信息，用于 web api 的响应 POST/GET 请求</li>
+<li>application/x-www-form-urlencoded: 普通表单，encoded URL 格式</li>
+<li>multipart/form-data: 多部分形式，一般用于传输包含二进制内容的多项内容（带文件的表单），包含 boundary 字段：表示分界线，分界 body 和 header，或者 header 与 header</li>
+<li>image/jpeg，application/zip：单文件</li>
+<li>Chunked Transfer Encoding: 分块传输编码<ol>
+<li>Transfer-Encoidng: chunked，</li>
+<li>表示 Body 长度无法确定，Content-Length 不能使用</li>
+<li>Body 格式：<br> \<length 1=""><br> \<data 1=""><br> \<length 2=""><br> \<data 2=""><br> 0<br> \n<br> (最后传输 0 + “\n”表示内容结束)</data></length></data></length></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Location: 重定向的模板 URL</li>
+<li>User-Agent: 用户代理（客户端，标识请求设备类型）</li>
+<li>Range / Accept-Range: 指定 Body 的内容范围—分段加载【断点续传】</li>
+<li>Cookie / set-Cookie: 发送 Cookie / 设置 Cookie</li>
+<li>Authorization: 授权信息</li>
+<li>Accept: 客户端能接受的数据类型，如 text/html</li>
+<li>Accept-Charset: 客户端接受的字符集，如 UTF-8</li>
+<li>Accept-Encoding: 客户端接受的压缩编码类型，如 gzip</li>
+<li>Content-Encoding：压缩类型，如 gzip</li>
+</ol>
+</li>
+<li>Cache<ol>
+<li>Cache 和 Buffer 的区别：Cacahe 表示缓存，存储起来可以直接取；Buffer 表示缓冲，针对工作流</li>
+<li>Cache-Control: no-cache[在此访问页面时，先请求服务是否失效],no-store[无缓存],max-age[指定时间内不用请求服务器，直接使用]</li>
+<li>Last-Modified: if-Modified-Since-最近修改时间，指定时间内不需要请求资源</li>
+<li>Etag：if-None-Match：指纹标签是否相同，相同则使用，否则重新请求</li>
+<li>Cache-Control：private / public—&gt;中间节点是否缓存资源</li>
+</ol>
+</li>
+</ul>
+<h3 id="RESTful-HTTP-按规范使用-HTTP"><a href="#RESTful-HTTP-按规范使用-HTTP" class="headerlink" title="RESTful HTTP: 按规范使用 HTTP"></a>RESTful HTTP: 按规范使用 HTTP</h3>
+    
+
+    
+</div>
+
 
                 
 
@@ -366,6 +482,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2019/12/14/Android 的消息机制/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -547,6 +671,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
